@@ -90,7 +90,7 @@
         android:id="@+id/button_ForgotPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="비밀번호 재설정"
+        android:text="비밀번호를 잊으셨나요?"
         android:fontFamily="@font/line_seed_sans_bold"
         android:textColor="@color/black"
         android:gravity="start|center_vertical"
