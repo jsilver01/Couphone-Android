@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <font-family xmlns:android="http://schemas.android.com/apk/res/android">
+
     <font android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/lineseedkr_bd"/>
@@ -11,4 +12,13 @@
     <font android:fontStyle="normal"
         android:fontWeight="400"
         android:font="@font/lineseedkr_th"/>
+
+    <font android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/line_seed_sans"/>
+
+    <font android:fontStyle="normal"
+        android:fontWeight="700"
+        android:font="@font/line_seed_sans_bold"/>
+
 </font-family>
