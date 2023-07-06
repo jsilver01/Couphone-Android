@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#CCF9F1EC"
+    android:padding="16dp"
+    android:fontFamily="@font/lineseedkr_rg"
+    tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/main_logo_iv"
+        android:layout_width="132dp"
+        android:layout_height="133dp"
+        android:layout_marginTop="129dp"
+        android:src="@drawable/main_logo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/couphone_logo_iv"/>
+
+    <ImageView
+        android:id="@+id/couphone_logo_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/couphone_logo"
+        app:layout_constraintTop_toBottomOf="@id/main_logo_iv"
+        app:layout_constraintBottom_toTopOf="@id/phone_number_et"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="50dp"/>
+
+
+    <EditText
+        android:id="@+id/phone_number_et"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="phone"
+        android:background="@drawable/rounded_edittext"
+        android:padding="16dp"
+        android:hint="휴대폰 번호"
+        app:layout_constraintTop_toBottomOf="@id/couphone_logo_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/password_et"
+        android:layout_marginTop="25dp"/>
+
+    <EditText
+        android:id="@+id/password_et"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:background="@drawable/rounded_edittext"
+        android:padding="16dp"
+        android:hint="패스워드"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@id/phone_number_et"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <CheckBox
+        android:id="@+id/remember_login_cb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="로그인 상태 유지"
+        app:layout_constraintTop_toBottomOf="@id/password_et"
+        app:layout_constraintStart_toStartOf="@id/password_et" />
+
+    <Button
+        android:id="@+id/buttonLogin"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="로그인"
+        android:backgroundTint="#2D5E62"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/remember_login_cb" />
+
+    <Button
+        android:id="@+id/button_ForgotPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 재설정"
+        android:textColor="@color/black"
+        android:gravity="start|center_vertical"
+        android:background="@android:color/transparent"
+        app:layout_constraintStart_toStartOf="@id/buttonLogin"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin" />
+
+    <Button
+        android:id="@+id/button_JoinMember"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        android:textColor="@color/black"
+        android:gravity="start|center_vertical"
+        android:background="@android:color/transparent"
+        app:layout_constraintEnd_toEndOf="@id/buttonLogin"
+        app:layout_constraintTop_toBottomOf="@id/buttonLogin" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
