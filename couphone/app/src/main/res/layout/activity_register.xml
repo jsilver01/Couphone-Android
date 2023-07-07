@@ -69,6 +69,7 @@
             android:layout_height="35dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:inputType="textPersonName"
             android:background="@null"
             android:textColor="@color/black"/>
     </LinearLayout>
@@ -104,6 +105,7 @@
             android:layout_height="36dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:inputType="phone"
             android:background="@null"
             android:textColor="@color/black"/>
     </LinearLayout>
@@ -154,6 +156,7 @@
             android:layout_height="35dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:inputType="number"
             android:background="@null"
             android:textColor="@color/black"/>
     </LinearLayout>
@@ -188,6 +191,7 @@
             android:layout_height="35dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:inputType="textPassword"
             android:background="@null"
             android:textColor="@color/black"/>
     </LinearLayout>
@@ -232,6 +236,7 @@
             android:layout_height="35dp"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
+            android:inputType="textPassword"
             android:background="@null"
             android:textColor="@color/black"/>
     </LinearLayout>
@@ -248,6 +253,7 @@
         app:layout_constraintTop_toTopOf="@id/register_text5"/>
 
     <Button
+        android:id="@+id/register_button"
         android:layout_width="278dp"
         android:layout_height="45dp"
         android:layout_marginTop="25dp"
