@@ -21,4 +21,8 @@
         android:fontWeight="700"
         android:font="@font/line_seed_sans_bold"/>
 
+    <font android:fontStyle="normal"
+        android:fontWeight="400"
+        android:font="@font/tway_fly"/>
+
 </font-family>
