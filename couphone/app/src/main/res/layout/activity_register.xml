@@ -65,6 +65,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_username">
 
         <EditText
+            android:id="@+id/username_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="15dp"
@@ -101,6 +102,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_phonenumber">
 
         <EditText
+            android:id="@+id/user_phone_num_et"
             android:layout_width="match_parent"
             android:layout_height="36dp"
             android:layout_marginLeft="15dp"
@@ -152,6 +154,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_verification_code">
 
         <EditText
+            android:id="@+id/verification_code_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="15dp"
@@ -187,6 +190,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_password">
 
         <EditText
+            android:id="@+id/userpw_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="15dp"
@@ -232,6 +236,7 @@
         app:layout_constraintTop_toBottomOf="@id/text_password2">
 
         <EditText
+            android:id="@+id/re_userpw_et"
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginLeft="15dp"
