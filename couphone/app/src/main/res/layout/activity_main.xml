@@ -1,31 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
     <FrameLayout
         android:id="@+id/main_frm"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-         />
+        />
+
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
+        app:fabCradleRoundedCornerRadius="-10dp"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:fabCradleRoundedCornerRadius="-10dp">
+        android:backgroundTint="@color/green"
+        android:layout_gravity="bottom">
 
         <com.google.android.material.bottomnavigation.BottomNavigationView
             android:id="@+id/bottomNavigationView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/green"
             android:layout_marginEnd="16dp"
             app:elevation="0dp"
             app:labelVisibilityMode="labeled"
-            android:background="@android:color/transparent"
+            app:itemIconTint="@color/bottom_nav_menu_select"
+            app:itemTextColor="@color/bottom_nav_menu_select"
             app:menu="@menu/bottom_nav_menu" />
 
     </com.google.android.material.bottomappbar.BottomAppBar>
@@ -37,9 +41,13 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/white"
         android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_dashboard_black_24dp"
-        app:fabCustomSize="88dp"
-        app:layout_anchor="@id/bottomAppBar"
+        android:layout_gravity="center|bottom"
+        android:src="@drawable/nooggi_logo"
+        android:scaleType="center"
+        app:tint="@null"
+        app:maxImageSize="70dp"
+        app:fabCustomSize="70dp"
+        android:layout_marginBottom="10dp"
         app:shapeAppearanceOverlay="@style/FloatingActionButtonStyle" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
