@@ -79,6 +79,7 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <Button
+        android:id="@+id/button_forgot_password"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_marginTop="15dp"
@@ -89,8 +90,6 @@
         app:layout_constraintTop_toBottomOf="@id/password_et"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
-
-
 
 
 
