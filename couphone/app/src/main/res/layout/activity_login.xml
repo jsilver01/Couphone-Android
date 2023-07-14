@@ -5,10 +5,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#CCF9F1EC"
+    android:background="#FFEECD"
     android:padding="16dp"
     android:fontFamily="@font/lineseedkr_rg"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/main_logo_iv"
@@ -19,7 +19,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/couphone_logo_iv"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/couphone_logo_iv"
@@ -27,7 +28,6 @@
         android:layout_height="55dp"
         android:src="@drawable/couphone_logo"
         app:layout_constraintTop_toBottomOf="@id/main_logo_iv"
-        app:layout_constraintBottom_toTopOf="@id/phone_number_et"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="15dp"/>
@@ -113,6 +113,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="회원가입"
+
         android:fontFamily="@font/lineseedkr_bd"
         android:textColor="#686868"
         android:textSize="12sp"
