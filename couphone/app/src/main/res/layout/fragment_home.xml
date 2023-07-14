@@ -2,6 +2,7 @@
 
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white">
@@ -32,7 +33,7 @@
             android:textSize="21sp"
             android:layout_marginTop="35dp"
             android:layout_marginLeft="25dp"
-            android:fontFamily="@font/lineseedkr_bd"
+            android:fontFamily="@font/tway_fly"
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@id/logo_iv"/>
 
@@ -44,16 +45,14 @@
             android:textSize="21sp"
             android:layout_marginTop="8dp"
             android:layout_marginLeft="25dp"
-            android:fontFamily="@font/lineseedkr_bd"
+            android:fontFamily="@font/tway_fly"
             android:textColor="@color/black"
             app:layout_constraintTop_toBottomOf="@id/search_tv1"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-    <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="18dp"
@@ -77,26 +76,25 @@
 
             <ImageView
                 android:id="@+id/latest_iv"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
                 android:layout_marginLeft="12dp"
-                android:layout_marginBottom="13dp"
-                android:src="@drawable/baseline_access_time_24"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/stopwatch"
                 android:layout_gravity="bottom"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/arrowoutward_btn"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_gravity="right"
                 android:layout_marginTop="36dp"
                 android:layout_marginLeft="300dp"
-                android:layout_marginRight="8dp"
-                android:src="@drawable/baseline_arrow_outward_24"
-                android:background="@color/white"
+                android:layout_marginRight="12dp"
+                android:background="@drawable/group1736_2"
                 app:layout_constraintStart_toEndOf="@id/latest_fl"/>
 
             <EditText
@@ -133,10 +131,10 @@
 
             <ImageView
                 android:id="@+id/search_iv"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginLeft="12dp"
-                android:src="@drawable/baseline_search_24"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginLeft="14dp"
+                android:src="@drawable/magnifyingglass"
                 android:layout_gravity="center_vertical"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -144,13 +142,13 @@
 
             <ImageButton
                 android:id="@+id/arrowupward_btn"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/baseline_arrow_upward_24"
-                android:background="@drawable/circle_shape" />
+                android:background="@drawable/group1735" />
+
 
             <EditText
                 android:id="@+id/search_et"
@@ -184,14 +182,29 @@
             android:id="@+id/category_tv1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="어떤 매장 쿠폰을 찾고 계신가요?"
+            android:text="어떤 매장 쿠폰"
             android:textSize="21sp"
             android:layout_marginLeft="25dp"
-            android:fontFamily="@font/lineseedkr_bd"
-            android:textColor="@color/black"
+            android:fontFamily="@font/tway_fly"
+            android:textColor="@color/green"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="을 찾고 계신가요?"
+            android:textSize="21sp"
+            android:layout_marginLeft="154dp"
+            android:fontFamily="@font/tway_fly"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
 
         <TextView
             android:id="@+id/category_tv2"
