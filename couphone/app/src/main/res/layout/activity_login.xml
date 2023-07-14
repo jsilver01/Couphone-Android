@@ -8,7 +8,7 @@
     android:background="#FFEECD"
     android:padding="16dp"
     android:fontFamily="@font/lineseedkr_rg"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/main_logo_iv"
