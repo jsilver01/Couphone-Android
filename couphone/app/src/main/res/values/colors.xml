@@ -12,5 +12,6 @@
     <color name="deep_gray">#8C8C8C</color>
     <color name="background">#F9F1EC</color>
     <color name="select">#2D5E62</color>
+    <color name="filter_text">#81BBA6</color>
     <color name="unselect">#FFFFFF</color>
 </resources>

@@ -3,78 +3,127 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <ImageView
         android:id="@+id/background_first_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/rectangle4385"
-        app:layout_constraintStart_toStartOf="parent"
         android:layout_marginStart="25dp"
         android:layout_marginTop="40dp"
-        app:layout_constraintTop_toTopOf="parent"/>
+        android:src="@drawable/rectangle4385"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginBottom="3dp"
         android:text="#"
         android:textColor="@color/white"
         android:textSize="20sp"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="3dp"
         app:layout_constraintStart_toStartOf="@id/background_first_iv"
-        app:layout_constraintTop_toTopOf="@id/background_first_iv"/>
+        app:layout_constraintTop_toTopOf="@id/background_first_iv" />
+
     <TextView
         android:id="@+id/category_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="40dp"
-        android:text="'키즈카페' "
         android:fontFamily="@font/tway_fly"
+        android:text="'키즈카페' "
         android:textColor="#2D5E62"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/background_first_iv"
         app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/search_top_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:text="카테고리입니다."
         android:fontFamily="@font/tway_fly"
+        android:text="카테고리입니다."
         android:textColor="#090909"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/category_tv"
         app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/left_arrow"
         android:layout_marginTop="5dp"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginEnd="30dp"
-        app:layout_constraintTop_toTopOf="@id/background_first_iv"/>
+        android:src="@drawable/left_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/background_first_iv" />
+
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/left_arrow"
-        app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="22dp"
-        app:layout_constraintTop_toTopOf="@id/background_first_iv"/>
+        android:src="@drawable/left_arrow"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/background_first_iv" />
+
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/search_tb"
         android:layout_width="match_parent"
         android:layout_height="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_top_tv"
         android:layout_marginVertical="30dp"
-        app:tabGravity="center"
-        app:tabSelectedTextColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_top_tv"
         app:tabBackground="@drawable/tab_background"
-        app:tabTextAppearance="@style/tabTextStyle"
+        app:tabGravity="center"
         app:tabIndicatorHeight="0dp"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextAppearance="@style/tabTextStyle"
         app:tabTextColor="#2D5E62" />
+
+    <LinearLayout
+        android:id="@+id/filter_button_ll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search_tb">
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/filter_btn_background"
+            android:fontFamily="@font/line_seed_sans"
+            android:text="쿠폰 현황순"
+            android:textColor="@color/filter_text"
+            android:textSize="12sp"
+            app:tabIndicatorHeight="0dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:background="@drawable/filter_btn_background"
+            android:fontFamily="@font/line_seed_sans"
+            android:text="인기 조회순"
+            android:textColor="@color/filter_text"
+            android:textSize="12sp"
+            app:tabIndicatorHeight="0dp" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:layout_width="wrap_content"
+            android:layout_height="30dp"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/filter_btn_background"
+            android:fontFamily="@font/line_seed_sans"
+            android:text="가나다순"
+            android:textColor="@color/filter_text"
+            android:textSize="12sp"
+            app:tabIndicatorHeight="0dp" />
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/search_record_sv"
@@ -82,7 +131,8 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_tb">
+        app:layout_constraintTop_toBottomOf="@id/filter_button_ll">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
