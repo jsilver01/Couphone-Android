@@ -1,4 +1,4 @@
-package com.kuit.couphone
+package com.kuit.couphone.ui.category.fashion
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kuit.couphone.BaseItemAdapter
 import com.kuit.couphone.data.StoreInfo
 import com.kuit.couphone.databinding.FragmentBaseBinding
 
-class KidsCafeFragment : Fragment() {
+class accesoryFragment : Fragment() {
     lateinit var binding : FragmentBaseBinding
-    var adapter : BaseItemAdapter ?= null
+    var adapter : BaseItemAdapter?= null
     var storeList = ArrayList<StoreInfo>()
     override fun onResume() {
         super.onResume()
@@ -28,6 +29,7 @@ class KidsCafeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initDummyData()
+        //storeList.addAll(listOf(StoreInfo("test1","test1111111"),StoreInfo("test2","test22222222222")))
         adapter = BaseItemAdapter(storeList)
         binding.categoryListRv.adapter = adapter
         binding.categoryListRv.layoutManager = LinearLayoutManager(context)
@@ -39,5 +41,7 @@ class KidsCafeFragment : Fragment() {
         storeList.add(StoreInfo("test2","test22222222222"))
         storeList.add(StoreInfo("test3","test333333333333333333"))
         storeList.add(StoreInfo("test4","test4444444444444444444"))
+        storeList.add(StoreInfo("test5","test4444444444444444444"))
+        adapter?.notifyDataSetChanged()
     }
 }

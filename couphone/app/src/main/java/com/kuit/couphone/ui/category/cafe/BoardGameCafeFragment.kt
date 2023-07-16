@@ -1,4 +1,4 @@
-package com.kuit.couphone
+package com.kuit.couphone.ui.category.cafe
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,12 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kuit.couphone.BaseItemAdapter
 import com.kuit.couphone.data.StoreInfo
 import com.kuit.couphone.databinding.FragmentBaseBinding
 
 class BoardGameCafeFragment : Fragment() {
     lateinit var binding : FragmentBaseBinding
-    var adapter : BaseItemAdapter ?= null
+    var adapter : BaseItemAdapter?= null
     var storeList = ArrayList<StoreInfo>()
     override fun onResume() {
         super.onResume()
