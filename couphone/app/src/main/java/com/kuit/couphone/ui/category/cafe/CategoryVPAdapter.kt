@@ -1,4 +1,4 @@
-package com.kuit.couphone
+package com.kuit.couphone.ui.category.cafe
 
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
