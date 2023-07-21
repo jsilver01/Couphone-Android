@@ -13,7 +13,7 @@ import com.kuit.couphone.databinding.FragmentCategoryBinding
 class CategoryFashionFragment : Fragment() {
 
     lateinit var binding: FragmentCategoryBinding
-    private val categoyList = listOf<String>("이너웨어", "일반 의류", "스포츠웨어","액세사리","신발")
+    private val categoyList = listOf<String>("의류","악세사리","신발")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
