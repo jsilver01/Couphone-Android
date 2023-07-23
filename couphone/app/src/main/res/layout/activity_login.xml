@@ -12,14 +12,14 @@
 
     <ImageView
         android:id="@+id/main_logo_iv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="500dp"
-        android:src="@drawable/logo_new"
+        android:layout_width="178dp"
+        android:layout_height="178dp"
+        android:src="@drawable/main_logo"
         app:layout_constraintBottom_toTopOf="@id/couphone_logo_tv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="130dp"/>
 
     <TextView
         android:id="@+id/couphone_logo_tv"
@@ -31,13 +31,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:fontFamily="@font/tway_fly"
         android:textColor="@color/green"
-        android:textSize="50sp"
-        />
-
+        android:textSize="50sp" />
 
     <EditText
         android:id="@+id/phone_number_et"
-        android:layout_width="300dp"
+        android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:inputType="phone"
         android:background="@drawable/rounded_edittext"
@@ -45,14 +43,14 @@
         android:hint="휴대폰 번호"
         android:fontFamily="@font/line_seed_sans_bold"
         app:layout_constraintTop_toBottomOf="@id/couphone_logo_tv"
+        app:layout_constraintBottom_toTopOf="@id/password_et"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/password_et"
         android:layout_marginTop="25dp"/>
 
     <EditText
         android:id="@+id/password_et"
-        android:layout_width="300dp"
+        android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:background="@drawable/rounded_edittext"
@@ -75,15 +73,15 @@
 
     <Button
         android:id="@+id/buttonLogin"
-        android:layout_width="300dp"
+        android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="로그인"
-        android:fontFamily="@font/line_seed_sans_bold"
         android:background="@drawable/register_button"
+        android:fontFamily="@font/line_seed_sans_bold"
+        android:text="로그인"
         android:textColor="@color/white"
-        android:backgroundTint="#2D5E62"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/remember_login_cb" />
 
@@ -93,7 +91,7 @@
         android:layout_height="wrap_content"
         android:text="비밀번호 재설정"
         android:fontFamily="@font/line_seed_sans_bold"
-        android:textColor="@color/black"
+        android:textColor="@color/textgray"
         android:gravity="start|center_vertical"
         android:background="@android:color/transparent"
         app:layout_constraintStart_toStartOf="@id/buttonLogin"
@@ -105,7 +103,7 @@
         android:layout_height="wrap_content"
         android:text="회원가입"
         android:fontFamily="@font/line_seed_sans_bold"
-        android:textColor="@color/black"
+        android:textColor="@color/textgray"
         android:gravity="start|center_vertical"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="@id/buttonLogin"
