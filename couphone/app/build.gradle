@@ -18,10 +18,6 @@ android {
         vectorDrawables {
             useSupportLibrary true
         }
-
-        viewBinding {
-            enabled = true
-        }
     }
 
     buildTypes {
@@ -38,8 +34,13 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
-        viewBinding true
-        compose true
+        viewBinding = true
+        dataBinding = true
+        compose = true
+    }
+
+    dataBinding {
+        enabled = true
     }
 
     viewBinding {
