@@ -349,7 +349,7 @@
             app:layout_constraintStart_toEndOf="@id/couphone_number_9"
             app:layout_constraintTop_toBottomOf="@id/couphone_number_1" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_couphone_use"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

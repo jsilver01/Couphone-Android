@@ -99,7 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/line_seed_sans_bold"
             android:text="내 계정 관리"
             android:textColor="@color/black"
@@ -125,7 +125,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
-            app:layout_constraintEnd_toEndOf="@id/line1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="40dp"
             app:layout_constraintTop_toTopOf="@id/couphone_tv" />
 
         <ImageView
@@ -133,8 +134,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:src="@drawable/line"
-            app:layout_constraintStart_toStartOf="@id/couphone_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/couphone_tv" />
 
         <TextView
@@ -155,7 +159,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
-            app:layout_constraintEnd_toEndOf="@id/line1"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="40dp"
             app:layout_constraintTop_toTopOf="@id/change_info_tv" />
 
         <ImageView
@@ -180,12 +185,13 @@
             app:layout_constraintTop_toBottomOf="@id/line2"/>
 
         <ImageButton
-            android:id="@+id/right_arrow_iv2"
+            android:id="@+id/rightArrowIv2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
-            app:layout_constraintEnd_toEndOf="@id/line3"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="40dp"
             app:layout_constraintTop_toTopOf="@id/logout_tv" />
 
         <ImageView
@@ -202,7 +208,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="40dp"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="50dp"
             android:fontFamily="@font/line_seed_sans_bold"
             android:text="시스템 고객지원"
             android:textColor="@color/black"
@@ -228,7 +234,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
-            app:layout_constraintEnd_toEndOf="@id/line4"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="40dp"
             app:layout_constraintTop_toTopOf="@id/inquiry_tv" />
 
         <ImageView
@@ -258,7 +265,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
-            app:layout_constraintEnd_toEndOf="@id/line5"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="40dp"
             app:layout_constraintTop_toTopOf="@id/use_tv" />
 
         <ImageView
@@ -288,7 +296,8 @@
             android:layout_height="wrap_content"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
-            app:layout_constraintEnd_toEndOf="@id/line6"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="40dp"
             app:layout_constraintTop_toTopOf="@id/version_tv" />
 
         <ImageView
