@@ -12,14 +12,15 @@
 
     <ImageView
         android:id="@+id/main_logo_iv"
-        android:layout_width="132dp"
-        android:layout_height="133dp"
-        android:layout_marginTop="90dp"
+
+        android:layout_width="178dp"
+        android:layout_height="178dp"
         android:src="@drawable/main_logo"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/couphone_logo_tv"
         app:layout_constraintEnd_toEndOf="parent"
-         />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="130dp"/>
 
     <ImageView
         android:id="@+id/couphone_logo_iv"
@@ -29,30 +30,29 @@
         app:layout_constraintTop_toBottomOf="@id/main_logo_iv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="15dp"/>
-
+        android:fontFamily="@font/tway_fly"
+        android:textColor="@color/green"
+        android:textSize="50sp" />
 
     <EditText
         android:id="@+id/phone_number_et"
         android:layout_width="278dp"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:inputType="phone"
         android:background="@drawable/rounded_edittext"
-        android:padding="13dp"
-        android:hint="  휴대폰 번호"
-        android:fontFamily="@font/lineseedkr_bd"
-        android:textColor="#BCBCBC"
-        android:textSize="14sp"
-        app:layout_constraintTop_toBottomOf="@id/couphone_logo_iv"
+        android:padding="16dp"
+        android:hint="휴대폰 번호"
+        android:fontFamily="@font/line_seed_sans_bold"
+        app:layout_constraintTop_toBottomOf="@id/couphone_logo_tv"
+        app:layout_constraintBottom_toTopOf="@id/password_et"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/password_et"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="25dp"/>
 
     <EditText
         android:id="@+id/password_et"
         android:layout_width="278dp"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:background="@drawable/rounded_edittext"
         android:padding="13dp"
@@ -78,17 +78,17 @@
         app:layout_constraintTop_toBottomOf="@id/password_et"
         app:layout_constraintStart_toStartOf="@id/password_et" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/buttonLogin"
         android:layout_width="278dp"
-        android:layout_height="46dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:background="@drawable/register_button"
+        android:fontFamily="@font/line_seed_sans_bold"
         android:text="로그인"
         android:textColor="@color/white"
-        android:textSize="17sp"
-        android:fontFamily="@font/lineseedkr_bd"
-        android:background="@drawable/rectangle_button"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/remember_login_cb" />
 
@@ -97,8 +97,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="비밀번호 재설정"
-        android:fontFamily="@font/lineseedkr_bd"
-        android:textColor="#686868"
+        android:fontFamily="@font/line_seed_sans_bold"
+        android:textColor="@color/textgray"
         android:textSize="12sp"
         android:gravity="start|center_vertical"
         android:background="@android:color/transparent"
@@ -112,11 +112,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="회원가입"
-
-        android:fontFamily="@font/lineseedkr_bd"
-        android:textColor="#686868"
+        android:fontFamily="@font/line_seed_sans_bold"
+        android:textColor="@color/textgray"
+        android:gravity="start|center_vertical"
         android:textSize="12sp"
-        android:gravity="right|center_vertical"
         android:layout_marginRight="15dp"
         android:layout_marginTop="7dp"
         android:background="@android:color/transparent"

@@ -15,23 +15,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
+        <ImageButton
             android:id="@+id/left_arrow_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="20dp"
-            android:src="@drawable/ic_arrow_left"
+            android:src="@drawable/left_arrow"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/left_arrow_iv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/ic_arrow_left"
-            app:layout_constraintStart_toEndOf="@id/left_arrow_iv"
-            app:layout_constraintTop_toTopOf="@id/left_arrow_iv" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@color/white"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -57,23 +50,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:src="@drawable/green_rectangle"
+            android:src="@drawable/checkbox"
             app:layout_constraintStart_toStartOf="@id/cafe_photo_iv"
             app:layout_constraintTop_toBottomOf="@id/cafe_photo_iv" />
-
-        <ImageView
-            android:id="@+id/check_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="2dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="3dp"
-            android:layout_marginBottom="5dp"
-            android:src="@drawable/check"
-            app:layout_constraintBottom_toBottomOf="@id/cafe_check_iv"
-            app:layout_constraintEnd_toEndOf="@id/cafe_check_iv"
-            app:layout_constraintStart_toStartOf="@id/cafe_check_iv"
-            app:layout_constraintTop_toTopOf="@id/cafe_check_iv" />
 
         <TextView
             android:id="@+id/cafe_name_tv"
@@ -169,7 +148,7 @@
             android:id="@+id/couphone_info_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="55dp"
             android:fontFamily="@font/lineseedkr_bd"
             android:lineSpacingExtra="8dp"
             android:text="스탬프 10개 적립시\n1회 무료 이용권을 드려요!"
@@ -177,6 +156,17 @@
             android:textSize="20sp"
             app:layout_constraintStart_toStartOf="@id/cafe_photo_iv"
             app:layout_constraintTop_toBottomOf="@id/couphone_issueddate_tv" />
+
+        <ImageView
+            android:id="@+id/sparkling_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sparkling"
+            app:layout_constraintStart_toEndOf="@id/couphone_info_tv"
+            app:layout_constraintBottom_toBottomOf="@id/couphone_info_tv"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="4dp"
+            android:background="@color/white"/>
 
         <TextView
             android:id="@+id/couphone_info_tv2"
@@ -192,7 +182,7 @@
             android:id="@+id/couphone_count_area"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginTop="20dp"
             android:background="@drawable/border_background"
             android:orientation="vertical"
             android:padding="8dp"
@@ -241,7 +231,7 @@
             android:id="@+id/couphone_count_background_iv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/couphone_background"
             app:layout_constraintStart_toStartOf="@id/cafe_photo_iv"
             app:layout_constraintTop_toBottomOf="@id/couphone_count_area" />
@@ -359,7 +349,7 @@
             app:layout_constraintStart_toEndOf="@id/couphone_number_9"
             app:layout_constraintTop_toBottomOf="@id/couphone_number_1" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/button_couphone_use"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
