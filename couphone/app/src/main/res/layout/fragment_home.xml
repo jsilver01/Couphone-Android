@@ -101,6 +101,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/arrowoutward_btn"
                 android:layout_width="22dp"
@@ -226,6 +227,21 @@
             app:layout_constraintTop_toTopOf="parent"
             android:layout_marginTop="2dp"
             android:layout_marginLeft="4dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="을 찾고 계신가요?"
+            android:textSize="21sp"
+            android:layout_marginLeft="154dp"
+            android:fontFamily="@font/tway_fly"
+            android:textColor="@color/black"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+        </TextView>
+
 
         <TextView
             android:id="@+id/category_tv2"

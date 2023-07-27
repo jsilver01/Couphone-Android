@@ -12,6 +12,7 @@
 
     <ImageView
         android:id="@+id/main_logo_iv"
+
         android:layout_width="178dp"
         android:layout_height="178dp"
         android:src="@drawable/main_logo"
@@ -21,11 +22,11 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginTop="130dp"/>
 
-    <TextView
-        android:id="@+id/couphone_logo_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="couphone"
+    <ImageView
+        android:id="@+id/couphone_logo_iv"
+        android:layout_width="244dp"
+        android:layout_height="55dp"
+        android:src="@drawable/couphone_logo"
         app:layout_constraintTop_toBottomOf="@id/main_logo_iv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,20 +55,26 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:background="@drawable/rounded_edittext"
-        android:padding="16dp"
-        android:hint="패스워드"
-        android:fontFamily="@font/line_seed_sans_bold"
-        android:layout_marginTop="20dp"
+        android:padding="13dp"
+        android:hint="  패스워드"
+        android:fontFamily="@font/lineseedkr_bd"
+        android:textColor="#BCBCBC"
+        android:textSize="14sp"
+        android:layout_marginTop="10dp"
         app:layout_constraintTop_toBottomOf="@id/phone_number_et"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <CheckBox
         android:id="@+id/remember_login_cb"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="로그인 상태 유지"
-        android:fontFamily="@font/line_seed_sans_bold"
+        android:fontFamily="@font/lineseedkr_bd"
+        android:textColor="#393939"
+        android:textSize="14sp"
+        android:layout_marginTop="15dp"
         app:layout_constraintTop_toBottomOf="@id/password_et"
         app:layout_constraintStart_toStartOf="@id/password_et" />
 
@@ -92,8 +99,11 @@
         android:text="비밀번호 재설정"
         android:fontFamily="@font/line_seed_sans_bold"
         android:textColor="@color/textgray"
+        android:textSize="12sp"
         android:gravity="start|center_vertical"
         android:background="@android:color/transparent"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="7dp"
         app:layout_constraintStart_toStartOf="@id/buttonLogin"
         app:layout_constraintTop_toBottomOf="@id/buttonLogin" />
 
@@ -105,6 +115,9 @@
         android:fontFamily="@font/line_seed_sans_bold"
         android:textColor="@color/textgray"
         android:gravity="start|center_vertical"
+        android:textSize="12sp"
+        android:layout_marginRight="15dp"
+        android:layout_marginTop="7dp"
         android:background="@android:color/transparent"
         app:layout_constraintEnd_toEndOf="@id/buttonLogin"
         app:layout_constraintTop_toBottomOf="@id/buttonLogin" />
