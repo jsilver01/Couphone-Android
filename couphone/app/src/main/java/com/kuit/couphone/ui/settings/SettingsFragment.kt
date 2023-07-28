@@ -7,7 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.kuit.couphone.LoginActivity
+import com.kuit.couphone.MyCouponFragment
+import com.kuit.couphone.R
 import com.kuit.couphone.databinding.FragmentSettingsBinding
+import com.kuit.couphone.ui.home.HomeFragment
 
 class SettingsFragment : Fragment() {
     private lateinit var binding: FragmentSettingsBinding
@@ -39,5 +42,21 @@ class SettingsFragment : Fragment() {
             startActivity(logoutIntent)
             requireActivity().finish()
         }
+
+        binding.leftArrowIv.setOnClickListener {
+            val intent = Intent(requireContext(), HomeFragment::class.java)
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, HomeFragment()).commit()
+        }
+
+        binding.couphoneTv.setOnClickListener {
+            val intent = Intent(requireContext(), MyCouponFragment::class.java)
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, MyCouponFragment()).commit()
+        }
+
+        binding.rightArrowIv.setOnClickListener {
+            val intent = Intent(requireContext(), MyCouponFragment::class.java)
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, MyCouponFragment()).commit()
+        }
+
     }
 }
