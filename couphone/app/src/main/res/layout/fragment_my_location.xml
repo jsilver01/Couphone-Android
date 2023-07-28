@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_frame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="bottom"
+    app:umanoPanelHeight="100dp"
+    app:umanoShadowHeight="0dp"
+    app:umanoDragView="@id/drawer"
+    tools:context=".MainActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <net.daum.mf.map.api.MapView
+            android:id="@+id/map_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="72dp"
+            android:orientation="vertical"
+            android:id="@+id/map_search_ll"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <FrameLayout
+                android:id="@+id/latest_fl"
+                android:layout_width="344dp"
+                android:layout_height="70dp"
+                android:background="@drawable/search_tab2"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/search_fl">
+
+
+                <ImageView
+                    android:id="@+id/latest_iv"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/stopwatch"
+                    android:layout_gravity="bottom"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <Button
+                    android:id="@+id/arrowoutward_btn"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="36dp"
+                    android:layout_marginLeft="300dp"
+                    android:layout_marginRight="12dp"
+                    android:background="@drawable/group1736_2"
+                    app:layout_constraintStart_toEndOf="@id/latest_fl"/>
+
+                <EditText
+                    android:id="@+id/latest_et"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:layout_gravity="bottom"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:textSize="14sp"
+                    android:textColor="#6F6F6F"
+                    android:fontFamily="@font/lineseedkr_bd"
+                    android:hint="최근 검색어 출력"
+                    app:layout_constraintStart_toEndOf="@id/search_iv"
+                    app:layout_constraintEnd_toStartOf="@id/arrowoutward_btn" />
+
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/search_fl"
+                android:layout_width="344dp"
+                android:layout_height="45dp"
+                android:background="@drawable/search_tab1"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/latest_fl">
+
+                <ImageView
+                    android:id="@+id/search_iv"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginLeft="14dp"
+                    android:src="@drawable/magnifyingglass"
+                    android:layout_gravity="center_vertical"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageButton
+                    android:id="@+id/arrowupward_btn"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="8dp"
+                    android:background="@drawable/group1735" />
+
+
+                <EditText
+                    android:id="@+id/search_et"
+                    android:layout_marginTop="3dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginRight="40dp"
+                    android:background="@color/white"
+                    android:layout_width="match_parent"
+                    android:layout_height="39dp"
+                    android:textSize="14sp"
+                    android:textColor="#BCBCBC"
+                    android:fontFamily="@font/lineseedkr_bd"
+                    android:hint="지갑 속에서 헤매지말고 쿠폰에서 검색!"
+                    app:layout_constraintStart_toEndOf="@id/search_iv"
+                    app:layout_constraintEnd_toStartOf="@id/arrowupward_btn" />
+
+
+            </FrameLayout>
+
+        </FrameLayout>
+        <ImageView
+            android:id="@+id/zoomout"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="400dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/zoomout"
+            />
+        <ImageView
+            android:id="@+id/zoomin"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/zoomout"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/zoomin"
+            />
+        <ImageView
+            android:id="@+id/mygps"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/zoomout"
+            android:layout_marginTop="10dp"
+            android:layout_marginStart="10dp"
+            android:src="@drawable/mygps_icon"
+            />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    <LinearLayout
+        android:id="@+id/drawer"
+        android:layout_width="match_parent"
+        android:layout_height="600dp"
+        android:orientation="vertical">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="600dp">
+            <View
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:id="@+id/swipe_bar"
+                android:background="@color/gray"
+                android:layout_width="46dp"
+                android:layout_height="5dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_gravity="center_horizontal"
+                />
+            <TextView
+                app:layout_constraintTop_toBottomOf="@id/swipe_bar"
+                app:layout_constraintStart_toStartOf="parent"
+                android:id="@+id/mylocation_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="나의 현 위치"
+                android:textSize="14sp"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="20dp"
+                android:fontFamily="@font/line_seed_sans"
+                android:textColor="@color/deep_gray"/>
+            <ImageView
+                android:id="@+id/cafe_check_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:src="@drawable/green_rectangle"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="10dp"
+                app:layout_constraintTop_toBottomOf="@id/mylocation_tv" />
+
+            <ImageView
+                android:id="@+id/check_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="3dp"
+                android:layout_marginBottom="5dp"
+                android:src="@drawable/check"
+                app:layout_constraintBottom_toBottomOf="@id/cafe_check_iv"
+                app:layout_constraintEnd_toEndOf="@id/cafe_check_iv"
+                app:layout_constraintStart_toStartOf="@id/cafe_check_iv"
+                app:layout_constraintTop_toTopOf="@id/cafe_check_iv" />
+
+            <TextView
+                android:id="@+id/cafe_name_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/lineseedkr_bd"
+                android:text=""
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="@id/cafe_check_iv"
+                app:layout_constraintStart_toEndOf="@id/cafe_check_iv"
+                app:layout_constraintTop_toTopOf="@id/cafe_check_iv" />
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                app:layout_constraintTop_toTopOf="parent"
+                android:layout_marginTop="100dp"
+                android:background="@color/black"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </LinearLayout>
+
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>

@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
 
                 R.id.navigation_settings -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, SettingsFragment())
+                        .replace(R.id.main_frm, MyLocationFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
