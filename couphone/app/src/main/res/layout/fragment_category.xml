@@ -4,33 +4,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <ImageButton
+        android:id="@+id/back_iv"
+        android:layout_width="40dp"
+        android:layout_height="56dp"
+        android:src="@drawable/left_arrow_double"
+        android:background="@color/white"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"/>
+
+
     <ImageView
         android:id="@+id/background_first_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="25dp"
-        android:layout_marginTop="40dp"
-        android:src="@drawable/rectangle4385"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
-        android:layout_marginBottom="3dp"
-        android:text="#"
-        android:textColor="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@id/background_first_iv"
-        app:layout_constraintTop_toTopOf="@id/background_first_iv" />
+        android:src="@drawable/category"
+        app:layout_constraintStart_toEndOf="@id/back_iv"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="25dp"/>
 
     <TextView
         android:id="@+id/category_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/tway_fly"
         android:text="'카페' "
         android:textColor="#2D5E62"
@@ -42,31 +42,13 @@
         android:id="@+id/search_top_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/tway_fly"
         android:text="카테고리입니다."
         android:textColor="#090909"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/category_tv"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="30dp"
-        android:src="@drawable/left_arrow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/background_first_iv" />
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="22dp"
-        android:src="@drawable/left_arrow"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/background_first_iv" />
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/search_tb"
@@ -98,9 +80,9 @@
             android:layout_height="30dp"
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/filter_btn_background"
-            android:fontFamily="@font/line_seed_sans"
+            android:fontFamily="@font/line_seed_sans_bold"
             android:text="쿠폰 현황순"
-            android:textColor="@color/filter_text"
+            android:textColor="@color/green"
             android:textSize="12sp"
             app:tabIndicatorHeight="0dp" />
 
@@ -108,9 +90,9 @@
             android:layout_width="wrap_content"
             android:layout_height="30dp"
             android:background="@drawable/filter_btn_background"
-            android:fontFamily="@font/line_seed_sans"
+            android:fontFamily="@font/line_seed_sans_bold"
             android:text="인기 조회순"
-            android:textColor="@color/filter_text"
+            android:textColor="@color/green"
             android:textSize="12sp"
             app:tabIndicatorHeight="0dp" />
 
@@ -119,9 +101,9 @@
             android:layout_height="30dp"
             android:layout_marginHorizontal="10dp"
             android:background="@drawable/filter_btn_background"
-            android:fontFamily="@font/line_seed_sans"
+            android:fontFamily="@font/line_seed_sans_bold"
             android:text="가나다순"
-            android:textColor="@color/filter_text"
+            android:textColor="@color/green"
             android:textSize="12sp"
             app:tabIndicatorHeight="0dp" />
     </LinearLayout>

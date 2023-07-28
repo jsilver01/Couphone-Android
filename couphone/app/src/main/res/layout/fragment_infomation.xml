@@ -25,11 +25,11 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageButton
-                android:id="@+id/left_arrow_iv"
+                android:id="@+id/back_iv"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:background="@color/white"
-                android:src="@drawable/left_arrow"
+                android:src="@drawable/left_arrow_double"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:contentDescription="이전 화면으로 돌아가기"/>
