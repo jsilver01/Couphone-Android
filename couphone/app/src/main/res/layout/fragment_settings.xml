@@ -15,12 +15,10 @@
 
         <ImageButton
             android:id="@+id/left_arrow_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
             android:background="@color/white"
-            android:src="@drawable/left_arrow"
+            android:src="@drawable/left_arrow_double"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -34,7 +32,8 @@
             android:textSize="18sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/left_arrow_iv" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="18dp"/>
 
         <View
             android:id="@+id/line"
@@ -121,8 +120,8 @@
 
         <ImageButton
             android:id="@+id/right_arrow_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
@@ -155,8 +154,8 @@
 
         <ImageButton
             android:id="@+id/right_arrow_iv1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
@@ -186,8 +185,8 @@
 
         <ImageButton
             android:id="@+id/rightArrowIv2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
@@ -230,8 +229,8 @@
 
         <ImageButton
             android:id="@+id/right_arrow_iv3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
@@ -261,8 +260,8 @@
 
         <ImageButton
             android:id="@+id/right_arrow_iv4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
@@ -292,8 +291,8 @@
 
         <ImageButton
             android:id="@+id/right_arrow_iv5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"

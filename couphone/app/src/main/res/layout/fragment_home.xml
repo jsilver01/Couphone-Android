@@ -36,7 +36,8 @@
             android:background="@color/white"
             app:layout_constraintTop_toTopOf="@id/logo_tv"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginRight="15dp"
+            android:contentDescription="알림"/>
 
         <TextView
             android:id="@+id/search_tv"
@@ -162,7 +163,7 @@
                 android:layout_gravity="right"
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="8dp"
-                android:background="@drawable/search_arrow" />
+                android:background="@drawable/search_arrow"/>
 
 
             <EditText
@@ -273,7 +274,8 @@
                 android:src="@drawable/gray_rectangle"
                 android:layout_marginLeft="9dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:contentDescription="문화"/>
 
             <ImageButton
                 android:id="@+id/cafe_btn2"
@@ -282,7 +284,8 @@
                 android:src="@drawable/gray_rectangle"
                 android:layout_marginLeft="27dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:contentDescription="카페"/>
 
             <ImageButton
                 android:id="@+id/mart_btn3"
@@ -291,7 +294,8 @@
                 android:src="@drawable/gray_rectangle"
                 android:layout_marginLeft="27dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:contentDescription="마트"/>
 
             <TextView
                 android:id="@+id/entertainment_tv1"
@@ -331,7 +335,8 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="5dp"
                 android:src="@drawable/gray_rectangle"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:contentDescription="뷰티"/>
 
             <ImageButton
                 android:id="@+id/restaurant_btn5"
@@ -341,7 +346,8 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="27dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:contentDescription="패션"/>
 
             <ImageButton
                 android:id="@+id/else_btn6"
@@ -351,12 +357,13 @@
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="27dp"
                 android:layout_marginBottom="5dp"
-                android:background="@color/white"/>
+                android:background="@color/white"
+                android:contentDescription="식당"/>
 
             <TextView
                 android:id="@+id/beauty_tv4"
                 android:layout_width="87dp"
-                android:text="뷰티/패션"
+                android:text="뷰티"
                 android:textColor="#565656"
                 android:textSize="14sp"
                 android:fontFamily="@font/lineseedkr_bd"
@@ -366,7 +373,7 @@
             <TextView
                 android:id="@+id/restaurant_tv5"
                 android:layout_width="87dp"
-                android:text="식당"
+                android:text="패션"
                 android:textColor="#565656"
                 android:textSize="14sp"
                 android:fontFamily="@font/lineseedkr_bd"
@@ -376,7 +383,7 @@
             <TextView
                 android:id="@+id/else_tv6"
                 android:layout_width="87dp"
-                android:text="기타"
+                android:text="식당"
                 android:textColor="#565656"
                 android:textSize="14sp"
                 android:fontFamily="@font/lineseedkr_bd"

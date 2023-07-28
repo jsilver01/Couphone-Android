@@ -59,7 +59,8 @@
             android:background="@drawable/rounded_edittext"
             android:fontFamily="@font/line_seed_sans_bold"
             android:inputType="textPersonName"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:hint="이름을 입력하세요"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -93,7 +94,8 @@
             android:background="@drawable/rounded_edittext"
             android:fontFamily="@font/line_seed_sans_bold"
             android:inputType="phone"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:hint="휴대폰번호를 입력하세요"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -142,7 +144,8 @@
             android:background="@drawable/rounded_edittext"
             android:fontFamily="@font/line_seed_sans_bold"
             android:inputType="text"
-            android:padding="16dp" />
+            android:padding="16dp"
+            android:hint="인증번호를 입력하세요"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -178,7 +181,8 @@
             android:inputType="textPassword"
             android:padding="16dp"
             android:drawableEnd="@drawable/lock_square"
-            android:drawablePadding="8dp" />
+            android:drawablePadding="8dp"
+            android:hint="비밀번호를 입력하세요"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -196,7 +200,7 @@
         app:layout_constraintTop_toBottomOf="@id/change_password_layout" />
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/change_password_check_layout"
+        android:id="@+id/password_check_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -206,7 +210,7 @@
         app:hintEnabled="false">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/change_password_check_et"
+            android:id="@+id/password_check_et"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_edittext"
@@ -214,7 +218,8 @@
             android:inputType="textPassword"
             android:padding="16dp"
             android:drawableEnd="@drawable/lock_square"
-            android:drawablePadding="8dp" />
+            android:drawablePadding="8dp"
+            android:hint="비밀번호를 확인하세요"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -231,7 +236,7 @@
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/change_password_check_layout" />
+        app:layout_constraintTop_toBottomOf="@id/password_check_layout" />
 
 
 
