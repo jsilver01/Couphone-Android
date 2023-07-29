@@ -7,6 +7,7 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
+        android:name=".KakaoApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,6 +18,21 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <meta-data android:name="com.kakao.sdk.AppKey" android:value="4d8bc2574df1b7f508727581b2d59c7e" />
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao 4d8bc2574df1b7f508727581b2d59c7e" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -38,9 +54,6 @@
             android:exported="true"/>
         <activity
             android:name=".RegisterActivity"
-            android:exported="true"/>
-        <activity
-            android:name=".SettingFragment"
             android:exported="true"/>
 
     </application>
