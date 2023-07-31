@@ -56,6 +56,7 @@ class LoginActivity : AppCompatActivity() {
         else if (token != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
+            Log.d("test","1234")
             finish()
         }
     }
@@ -82,6 +83,10 @@ class LoginActivity : AppCompatActivity() {
                 if (error == null) {
                     Log.d(TAG, "accessTokenInfo 유효성 체크 성공, 회원번호 >> ${accessToken?.id}")
                     getKakaoUser()
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    Log.d("test","1234")
+                    finish()
                 } else {
                     Log.d(TAG, "accessTokenInfo 유효성 체크 실패")
 

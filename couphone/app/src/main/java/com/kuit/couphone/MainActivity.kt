@@ -1,6 +1,7 @@
 package com.kuit.couphone
 
 import android.os.Bundle
+import android.provider.Settings
 import androidx.appcompat.app.AppCompatActivity
 import com.kuit.couphone.databinding.ActivityMainBinding
 import com.kuit.couphone.ui.home.HomeFragment
@@ -21,15 +22,19 @@ class MainActivity : AppCompatActivity() {
     }
     private fun initBottomNavigation() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm, HomeFragment())
+            .replace(R.id.main_frm, MyLocationFragment())
             .commitAllowingStateLoss()
 
-
+        binding.bottomAppBar.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, HomeFragment())
+                .commitAllowingStateLoss()
+        }
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_home -> {
                     supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, HomeFragment())
+                        .replace(R.id.main_frm, MyLocationFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
