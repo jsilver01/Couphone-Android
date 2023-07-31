@@ -194,7 +194,7 @@
                 android:id="@+id/mylocation_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="나의 현 위치"
+                android:text="주소"
                 android:textSize="14sp"
                 android:layout_marginTop="5dp"
                 android:layout_marginStart="20dp"

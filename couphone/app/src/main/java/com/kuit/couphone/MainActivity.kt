@@ -2,7 +2,10 @@ package com.kuit.couphone
 
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.findFragment
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import com.kuit.couphone.databinding.ActivityMainBinding
 import com.kuit.couphone.ui.home.HomeFragment
 import com.kuit.couphone.ui.settings.SettingsFragment
@@ -25,18 +28,21 @@ class MainActivity : AppCompatActivity() {
             .replace(R.id.main_frm, MyLocationFragment())
             .commitAllowingStateLoss()
 
-        binding.bottomAppBar.setOnClickListener {
+        binding.fab.setOnClickListener {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.main_frm, HomeFragment())
                 .commitAllowingStateLoss()
         }
-        binding.bottomNavigationView.setOnItemSelectedListener {
+        binding.bottomNavigationView.setOnItemSelectedListener{
             when (it.itemId) {
                 R.id.navigation_home -> {
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.main_frm, MyLocationFragment())
-                        .commitAllowingStateLoss()
-                    return@setOnItemSelectedListener true
+
+                    if(binding.bottomNavigationView.selectedItemId != it.itemId) {
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.main_frm, MyLocationFragment())
+                            .commitAllowingStateLoss()
+                        return@setOnItemSelectedListener true
+                    }
                 }
 
                 R.id.navigation_settings -> {
