@@ -21,19 +21,26 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.kuit.couphone.data.AddressInfo
 import com.kuit.couphone.databinding.FragmentMyLocationBinding
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
 import net.daum.mf.map.api.MapReverseGeoCoder
 import net.daum.mf.map.api.MapView
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import java.util.*
 
 
-class MyLocationFragment : Fragment() {
+class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
     companion object {
         const val BASE_URL = "https://dapi.kakao.com/"
-        const val API_KEY = "4d8bc2574df1b7f508727581b2d59c7e"  // REST API 키
+        const val API_KEY = "KakaoAK 079ad8dac5fa1bc11ec4fc2f07e56c59"  // REST API 키
     }
+    var isMarkerAdded = false
     lateinit var binding: FragmentMyLocationBinding
     private val ACCESS_FINE_LOCATION = 1000
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -58,7 +65,7 @@ class MyLocationFragment : Fragment() {
         binding.mygps.setOnClickListener{
             move_to_my_gps()
         }
-
+        binding.mapView.setMapViewEventListener(this)
 
         return binding.root
     }
@@ -82,12 +89,6 @@ class MyLocationFragment : Fragment() {
             //var geocoder = Geocoder(requireContext(), Locale.KOREA)
             if (location != null) {
                 val uNowPosition = MapPoint.mapPointWithGeoCoord(location.latitude, location.longitude)
-                val marker = MapPOIItem()
-                marker.itemName = "현 위치"
-                marker.mapPoint =uNowPosition
-                marker.markerType = MapPOIItem.MarkerType.BluePin
-                marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin
-                binding.mapView.addPOIItem(marker)
                 binding.mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(location.latitude,location.longitude),true)
                 val reverseGeoCoder = MapReverseGeoCoder(
                     "4d8bc2574df1b7f508727581b2d59c7e",
@@ -97,8 +98,7 @@ class MyLocationFragment : Fragment() {
                             mapReverseGeoCoder: MapReverseGeoCoder,
                             s: String
                         ) {
-                            var AddressData = s
-                            binding.cafeNameTv.text = AddressData
+                            convertAddress(s)
                         }
 
                         override fun onReverseGeoCoderFailedToFindAddress(mapReverseGeoCoder: MapReverseGeoCoder) {
@@ -134,8 +134,7 @@ class MyLocationFragment : Fragment() {
                             mapReverseGeoCoder: MapReverseGeoCoder,
                             s: String
                         ) {
-                            var AddressData = s
-                            binding.cafeNameTv.text = AddressData
+                            convertAddress(s)
                         }
 
                         override fun onReverseGeoCoderFailedToFindAddress(mapReverseGeoCoder: MapReverseGeoCoder) {
@@ -233,32 +232,107 @@ class MyLocationFragment : Fragment() {
         // 호출에 실패한 경우.
     }
 
-//    fun getCurrentLocation() {
-//        val permissionCheck = ContextCompat
-//            .checkSelfPermission(requireContext(), ACCESS_FINE_LOCATION)
-//        if (permissionCheck == PackageManager.PERMISSION_GRANTED) {
-//            val lm = requireContext()
-//                .getSystemService(LOCATION_SERVICE) as LocationManager
-//
-//            try {
-//                val userCurLocation = lm
-//                    .getLastKnownLocation(LocationManager.NETWORK_PROVIDER)
-//                Log.d("testtest","1234")
-//                val uLatitude = userCurLocation!!.latitude
-//                val uLogitude = userCurLocation.longitude
-//                val uCurPosition = MapPoint.mapPointWithGeoCoord(uLatitude, uLogitude)
-//                binding.mapView.setMapCenterPoint(uCurPosition, true)
-//            } catch (e: java.lang.NullPointerException) {
-//                Log.e("LOCATION_ERROR", e.toString())
-//
-//                ActivityCompat.finishAffinity(requireActivity())
-//
-//                val intent = Intent(context, MyLocationFragment::class.java)
-//                startActivity(intent)
-//                System.exit(0)
-//            }
-//        } else {
-//            Toast.makeText(requireContext(),"위치권한 없음",Toast.LENGTH_SHORT).show()
-//        }
-//    }
+    override fun onMapViewInitialized(p0: MapView?) {
+
+    }
+
+    override fun onMapViewCenterPointMoved(p0: MapView?, p1: MapPoint?) {
+
+    }
+
+    override fun onMapViewZoomLevelChanged(p0: MapView?, p1: Int) {
+    }
+
+    override fun onMapViewSingleTapped(p0: MapView?, p1: MapPoint?) {
+        binding.mapView.removeAllPOIItems()
+        val marker = MapPOIItem()
+        marker.itemName = "마커 이름"
+        marker.tag = 0
+        marker.mapPoint = MapPoint.mapPointWithGeoCoord(p1?.mapPointGeoCoord!!.latitude, p1?.mapPointGeoCoord!!.longitude)
+        Log.d("testlatitue",p1?.mapPointGeoCoord!!.latitude.toString())
+        marker.markerType = MapPOIItem.MarkerType.BluePin        // 마커 모양 (커스텀)
+        marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin  // 클릭 시 마커 모양 (커스텀)
+        // 지도에 마커 추가
+        binding.mapView.addPOIItem(marker)
+        isMarkerAdded = true // 마커 추가 상태로 변경
+        //선택한 위치로 지도 중심 변경
+        binding.mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(p1?.mapPointGeoCoord!!.latitude, p1?.mapPointGeoCoord!!.longitude),true)
+        val reverseGeoCoder = MapReverseGeoCoder(
+            "4d8bc2574df1b7f508727581b2d59c7e",
+            MapPoint.mapPointWithGeoCoord(p1?.mapPointGeoCoord!!.latitude, p1?.mapPointGeoCoord!!.longitude),
+            object : MapReverseGeoCoder.ReverseGeoCodingResultListener {
+                override fun onReverseGeoCoderFoundAddress(
+                    mapReverseGeoCoder: MapReverseGeoCoder,
+                    s: String
+                ) {
+                    convertAddress(s)
+                }
+
+                override fun onReverseGeoCoderFailedToFindAddress(mapReverseGeoCoder: MapReverseGeoCoder) {
+                    binding.cafeNameTv.text = ("address not found")
+                }
+            },
+            requireActivity()
+        )
+        reverseGeoCoder.startFindingAddress()
+
+    }
+
+    override fun onMapViewDoubleTapped(p0: MapView?, p1: MapPoint?) {
+
+    }
+
+    override fun onMapViewLongPressed(p0: MapView?, p1: MapPoint?) {
+    }
+
+    override fun onMapViewDragStarted(p0: MapView?, p1: MapPoint?) {
+    }
+
+    override fun onMapViewDragEnded(p0: MapView?, p1: MapPoint?) {
+    }
+
+    override fun onMapViewMoveFinished(p0: MapView?, p1: MapPoint?) {
+    }
+
+    private fun convertAddress(keyword: String) {
+        val retrofit = Retrofit.Builder()   // Retrofit 구성
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val api = retrofit.create(KakaoAPI::class.java)   // 통신 인터페이스를 객체로 생성
+        val call = api.getSearchKeyword(API_KEY, keyword)   // 검색 조건 입력
+
+        // API 서버에 요청
+        call.enqueue(object: Callback<AddressInfo> {
+            override fun onResponse(
+                call: Call<AddressInfo>,
+                response: Response<AddressInfo>
+            ) {
+                // 통신 성공 (검색 결과는 response.body()에 담겨있음)
+                Log.d("Test", "Raw: ${response.raw()}")
+                Log.d("Test", "Body: ${response.body()}")
+                if(response.body()==null){
+                    binding.cafeNameTv.text = keyword
+                }
+                else {
+                    if(response.body()!!.documents[0].road_address != null) {
+                        if (response.body()!!.documents[0].road_address.building_name == "") {
+                            binding.cafeNameTv.text = response.body()!!.documents[0].address.address_name
+                        } else {
+                            var address =
+                                response.body()!!.documents[0].road_address.region_3depth_name + " " + response.body()!!.documents[0].road_address.building_name
+                            binding.cafeNameTv.text = address
+                        }
+                    }else{
+                        binding.cafeNameTv.text = keyword
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<AddressInfo>, t: Throwable) {
+                // 통신 실패
+                Log.w("MainActivity", "통신 실패: ${t.message}")
+            }
+        })
+    }
 }
