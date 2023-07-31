@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/green">
+
+
+    <ImageView
+        android:id="@+id/logo_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/logo_green"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="280dp"/>
+
+    <TextView
+        android:id="@+id/couphone_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="couphone"
+        android:textColor="@color/white"
+        android:fontFamily="@font/tway_fly"
+        android:textSize="50sp"
+        app:layout_constraintTop_toBottomOf="@id/logo_iv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+    <TextView
+        android:id="@+id/detail_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="지류쿠폰과 핸드폰의 만남"
+        android:fontFamily="@font/tway_fly"
+        android:textColor="@color/white"
+        android:textSize="13sp"
+        app:layout_constraintTop_toBottomOf="@id/couphone_tv"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="5dp"/>
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

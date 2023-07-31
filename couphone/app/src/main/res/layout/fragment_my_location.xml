@@ -31,7 +31,7 @@
                 android:id="@+id/latest_fl"
                 android:layout_width="344dp"
                 android:layout_height="70dp"
-                android:background="@drawable/search_tab2"
+                android:background="@drawable/search_tab_gray"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
@@ -52,7 +52,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-                <Button
+                <androidx.appcompat.widget.AppCompatButton
                     android:id="@+id/arrowoutward_btn"
                     android:layout_width="22dp"
                     android:layout_height="22dp"
@@ -60,7 +60,7 @@
                     android:layout_marginTop="36dp"
                     android:layout_marginLeft="300dp"
                     android:layout_marginRight="12dp"
-                    android:background="@drawable/group1736_2"
+                    android:background="@drawable/group_1736"
                     app:layout_constraintStart_toEndOf="@id/latest_fl"/>
 
                 <EditText
@@ -87,7 +87,7 @@
                 android:id="@+id/search_fl"
                 android:layout_width="344dp"
                 android:layout_height="45dp"
-                android:background="@drawable/search_tab1"
+                android:background="@drawable/search_tab_green"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -100,7 +100,7 @@
                     android:layout_width="15dp"
                     android:layout_height="15dp"
                     android:layout_marginLeft="14dp"
-                    android:src="@drawable/magnifyingglass"
+                    android:src="@drawable/magnify_logo"
                     android:layout_gravity="center_vertical"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -113,7 +113,7 @@
                     android:layout_gravity="right"
                     android:layout_marginTop="10dp"
                     android:layout_marginRight="8dp"
-                    android:background="@drawable/group1735" />
+                    android:background="@drawable/search_arrow" />
 
 
                 <EditText
@@ -218,7 +218,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginEnd="3dp"
                 android:layout_marginBottom="5dp"
-                android:src="@drawable/check"
+                android:src="@drawable/checkbox"
                 app:layout_constraintBottom_toBottomOf="@id/cafe_check_iv"
                 app:layout_constraintEnd_toEndOf="@id/cafe_check_iv"
                 app:layout_constraintStart_toStartOf="@id/cafe_check_iv"

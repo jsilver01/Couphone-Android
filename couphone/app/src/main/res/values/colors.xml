@@ -11,7 +11,9 @@
     <color name="gray">#D9D9D9</color>
     <color name="deep_gray">#8C8C8C</color>
     <color name="background">#F9F1EC</color>
-    <color name="select">#2D5E62</color>
-    <color name="filter_text">#81BBA6</color>
-    <color name="unselect">#FFFFFF</color>
+    <color name="textgray">#686868</color>
+    <color name="maincolor">#FFEECD</color>
+    <color name="select">#000000</color>
+    <color name="unselect">#DDDDDD</color>
+    <color name="filter_text">#0000DD</color>
 </resources>

@@ -10,12 +10,12 @@
         android:id="@+id/background_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background_item"/>
+        android:src="@drawable/couphone_background"/>
     <ImageView
         android:id="@+id/category_img_iv"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:src="@drawable/rounded_button2"
+        android:src="@drawable/gray_rectangle"
         android:layout_marginStart="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,7 +27,7 @@
         app:layout_constraintStart_toEndOf="@id/category_img_iv"
         app:layout_constraintTop_toTopOf="@id/category_img_iv"
         android:layout_marginStart="10dp"
-        android:src="@drawable/background_couphone_count"/>
+        android:src="@drawable/couphone_count_box"/>
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

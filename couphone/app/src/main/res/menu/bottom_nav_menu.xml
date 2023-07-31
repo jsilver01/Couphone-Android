@@ -13,7 +13,7 @@
 
     <item
         android:id="@+id/navigation_settings"
-        android:icon="@drawable/setting_logo"
+        android:icon="@drawable/ic_setting"
         android:title="설정" />
 
 </menu>

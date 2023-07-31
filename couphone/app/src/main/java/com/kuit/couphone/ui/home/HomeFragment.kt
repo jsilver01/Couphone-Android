@@ -5,10 +5,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.kuit.couphone.ui.category.cafe.CategoryFragment
+import com.example.stickode4.SearchFragment
 import com.kuit.couphone.R
 import com.kuit.couphone.databinding.FragmentHomeBinding
 import com.kuit.couphone.ui.category.beauty.CategoryBeautyFragment
+import com.kuit.couphone.ui.category.cafe.CategoryFragment
 import com.kuit.couphone.ui.category.culture.CategoryCultureFragment
 import com.kuit.couphone.ui.category.fashion.CategoryFashionFragment
 import com.kuit.couphone.ui.category.mart.CategoryMartFragment
@@ -42,6 +43,12 @@ class HomeFragment : Fragment() {
         binding.elseBtn6.setOnClickListener{
             parentFragmentManager.beginTransaction().replace(R.id.main_frm, CategoryFashionFragment()).commit()
         }
+
+
+        binding.arrowupwardBtn.setOnClickListener{
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, SearchFragment()).commit()
+        }
+
         return binding.root
     }
 }
