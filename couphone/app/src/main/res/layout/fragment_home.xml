@@ -166,7 +166,7 @@
                 android:background="@drawable/search_arrow"/>
 
 
-            <EditText
+            <TextView
                 android:id="@+id/search_et"
                 android:layout_marginTop="3dp"
                 android:layout_marginBottom="3dp"
@@ -179,8 +179,7 @@
                 android:textColor="#BCBCBC"
                 android:fontFamily="@font/lineseedkr_bd"
                 android:hint="지갑 속에서 헤매지말고 쿠폰에서 검색!"
-                app:layout_constraintStart_toEndOf="@id/search_iv"
-                app:layout_constraintEnd_toStartOf="@id/arrowupward_btn" />
+                android:paddingTop="12dp" />
 
 
         </FrameLayout>
