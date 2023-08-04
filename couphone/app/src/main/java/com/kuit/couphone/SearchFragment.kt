@@ -8,22 +8,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.SearchAdapter
-import com.google.gson.Gson
-import com.kuit.couphone.BaseItemAdapter
+import com.kuit.couphone.SearchAdapter
 import com.kuit.couphone.R
-import com.kuit.couphone.SearchItem
 import com.kuit.couphone.SearchResultFragment
 import com.kuit.couphone.data.LocalSearchDB
 import com.kuit.couphone.data.LocalSearchEntity
-import com.kuit.couphone.databinding.FragmentHomeBinding
 import com.kuit.couphone.databinding.FragmentSearchBinding
-import com.kuit.couphone.ui.home.HomeFragment
 import java.util.Locale
 
 class SearchFragment : Fragment() {

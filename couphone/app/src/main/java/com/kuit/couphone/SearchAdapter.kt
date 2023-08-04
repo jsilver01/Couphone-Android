@@ -1,10 +1,9 @@
-package com.example.myapplication
+package com.kuit.couphone
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.kuit.couphone.R
 import com.kuit.couphone.data.LocalSearchEntity
 import com.kuit.couphone.databinding.ItemSearchBinding
 

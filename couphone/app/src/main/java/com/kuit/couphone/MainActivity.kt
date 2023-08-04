@@ -43,5 +43,9 @@ class MainActivity : AppCompatActivity() {
             }
             false
         }
+
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 }
