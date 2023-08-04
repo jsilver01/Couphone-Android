@@ -1,5 +1,6 @@
 package com.kuit.couphone.ui.category.cafe
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,7 +11,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.kuit.couphone.BaseItemAdapter
-import com.kuit.couphone.InformationFragment
+import com.kuit.couphone.InformationActivity
 import com.kuit.couphone.R
 import com.kuit.couphone.data.StoreInfo
 import com.kuit.couphone.databinding.FragmentCategoryBinding
@@ -30,7 +31,7 @@ class CategoryFragment : Fragment() {
         initDummyData()
         binding.backIv.setOnClickListener {
             parentFragmentManager.findFragmentById(R.id.main_frm)
-            parentFragmentManager.beginTransaction().apply{replace(R.id.main_frm, InformationFragment()).addToBackStack(null).commit()}
+            parentFragmentManager.beginTransaction().apply{replace(R.id.main_frm, HomeFragment()).addToBackStack(null).commit()}
         }
 
         return binding.root
@@ -44,8 +45,8 @@ class CategoryFragment : Fragment() {
         binding.categoryTv.text = "'카페'"
         adapter!!.setOnItemClickListener(object : BaseItemAdapter.OnItemClickListener{
             override fun onItemClick(itemList: StoreInfo) {
-                parentFragmentManager.beginTransaction().replace(R.id.main_frm, InformationFragment()).commit()
-
+                val intent = Intent(requireContext(), InformationActivity::class.java)
+                startActivity(intent)
             }
         })
     }

@@ -1,5 +1,6 @@
 package com.kuit.couphone.ui.category.fashion
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,10 +10,7 @@ import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.kuit.couphone.BaseItemAdapter
-import com.kuit.couphone.InformationFragment
-import com.kuit.couphone.MyCouponFragment
-import com.kuit.couphone.R
+import com.kuit.couphone.*
 import com.kuit.couphone.data.StoreInfo
 import com.kuit.couphone.databinding.FragmentCategoryBinding
 import com.kuit.couphone.ui.home.HomeFragment
@@ -44,8 +42,8 @@ class CategoryFashionFragment : Fragment() {
         binding.categoryTv.text = "'패션'"
         adapter!!.setOnItemClickListener(object : BaseItemAdapter.OnItemClickListener{
             override fun onItemClick(itemList: StoreInfo) {
-                parentFragmentManager.beginTransaction().apply{replace(R.id.main_frm, InformationFragment()).addToBackStack(null).commit()}
-            }
+                val intent = Intent(requireContext(), InformationActivity::class.java)
+                startActivity(intent)    }
 
         })
     }

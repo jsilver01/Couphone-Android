@@ -1,5 +1,6 @@
 package com.kuit.couphone.ui.category.restaurant
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -40,8 +41,8 @@ class CategoryRestaurantFragment : Fragment() {
         binding.categoryTv.text = "'식당'"
         adapter!!.setOnItemClickListener(object : BaseItemAdapter.OnItemClickListener{
             override fun onItemClick(itemList: StoreInfo) {
-                parentFragmentManager.beginTransaction().apply{replace(R.id.main_frm, InformationFragment()).addToBackStack(null).commit()}
-            }
+                val intent = Intent(requireContext(), InformationActivity::class.java)
+                startActivity(intent)        }
 
         })
     }

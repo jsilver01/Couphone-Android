@@ -24,9 +24,6 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    override fun onBackPressed() {
-        super.onBackPressed()
-    }
 
     private fun initBottomNavigation() {
         supportFragmentManager.beginTransaction()
