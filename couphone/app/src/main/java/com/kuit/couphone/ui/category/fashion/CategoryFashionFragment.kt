@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
+import com.kuit.couphone.R
 import com.kuit.couphone.databinding.FragmentCategoryBinding
 
 class CategoryFashionFragment : Fragment() {
@@ -33,6 +34,13 @@ class CategoryFashionFragment : Fragment() {
             tab.text = categoyList[pos]
         }.attach()
         setTabItemMargin(binding.searchTb,30)
+        binding.backIv.setOnClickListener {
+            val homeFragment = com.kuit.couphone.ui.home.HomeFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, homeFragment)
+                .addToBackStack(null)
+                .commitAllowingStateLoss()
+        }
     }
     private fun setTabItemMargin(tabLayout: TabLayout, marginEnd: Int = 20) {
         for (i in 0 until 3) {

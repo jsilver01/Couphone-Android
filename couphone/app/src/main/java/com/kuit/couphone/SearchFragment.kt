@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -43,24 +44,7 @@ class SearchFragment : Fragment() {
 
         searchItemList.add(SearchItem("apple"))
         searchItemList.add(SearchItem("banana"))
-        searchItemList.add(SearchItem("candy"))
-        searchItemList.add(SearchItem("hello"))
-        searchItemList.add(SearchItem("line"))
-        searchItemList.add(SearchItem("cup"))
-        searchItemList.add(SearchItem("pumpkin"))
-        searchItemList.add(SearchItem("king"))
-        searchItemList.add(SearchItem("coffee"))
-        searchItemList.add(SearchItem("fight"))
-        searchItemList.add(SearchItem("lemon"))
-        searchItemList.add(SearchItem("dance"))
-        searchItemList.add(SearchItem("xml"))
-        searchItemList.add(SearchItem("queen"))
-        searchItemList.add(SearchItem("zebra"))
-        searchItemList.add(SearchItem("captain"))
-        searchItemList.add(SearchItem("summer"))
-        searchItemList.add(SearchItem("meeting"))
-        searchItemList.add(SearchItem("notebook"))
-        searchItemList.add(SearchItem("condition"))
+        // (검색 아이템 목록 추가)
 
         searchAdapter.notifyDataSetChanged()
 
@@ -76,8 +60,17 @@ class SearchFragment : Fragment() {
                 }
             }
 
-            override fun afterTextChanged(editable: Editable?) {
+            override fun afterTextChanged(editable: Editable?) {}
 
+        })
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val homeFragment = com.kuit.couphone.ui.home.HomeFragment()
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, homeFragment)
+                    .addToBackStack(null)
+                    .commitAllowingStateLoss()
             }
         })
 
