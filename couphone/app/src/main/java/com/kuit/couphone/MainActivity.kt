@@ -22,6 +22,10 @@ class MainActivity : AppCompatActivity() {
         binding.fab.setOnClickListener {
             navigateToHomeFragment()
         }
+
+    }
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
 
     private fun initBottomNavigation() {

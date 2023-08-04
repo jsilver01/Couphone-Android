@@ -315,7 +315,7 @@
             <TextView
                 android:id="@+id/restaurant_tv5"
                 android:layout_width="87dp"
-                android:text="패션"
+                android:text="식당"
                 android:textColor="#565656"
                 android:textSize="14sp"
                 android:fontFamily="@font/lineseedkr_bd"
@@ -325,7 +325,7 @@
             <TextView
                 android:id="@+id/else_tv6"
                 android:layout_width="87dp"
-                android:text="식당"
+                android:text="패션"
                 android:textColor="#565656"
                 android:textSize="14sp"
                 android:fontFamily="@font/lineseedkr_bd"
