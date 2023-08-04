@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:id="@+id/constarint">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/searchment_cl"
@@ -25,7 +26,7 @@
             android:fontFamily="@font/tway_fly"
             android:textColor="@color/green"
             android:textSize="35sp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="30dp"
             android:layout_marginStart="25dp"/>
 
         <ImageButton
@@ -45,7 +46,7 @@
             android:layout_height="wrap_content"
             android:text="여러 쿠폰들을\n한번에 검색해보세요"
             android:textSize="21sp"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="50dp"
             android:layout_marginLeft="25dp"
             android:fontFamily="@font/tway_fly"
             android:textColor="@color/black"
@@ -70,68 +71,11 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="30dp"
         tools:context=".HomeFragment"
         android:orientation="vertical"
         android:id="@+id/search_ll"
         app:layout_constraintTop_toBottomOf="@id/searchment_cl">
-
-        <FrameLayout
-            android:id="@+id/latest_fl"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:background="@drawable/search_tab_gray"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/search_fl">
-
-
-            <ImageView
-                android:id="@+id/latest_iv"
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginBottom="15dp"
-                android:background="@drawable/stopwatch"
-                android:layout_gravity="bottom"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/arrowoutward_btn"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:layout_gravity="right"
-                android:layout_marginTop="36dp"
-                android:layout_marginLeft="300dp"
-                android:layout_marginRight="12dp"
-                android:background="@drawable/group_1736"
-                app:layout_constraintStart_toEndOf="@id/latest_fl"/>
-
-            <EditText
-                android:id="@+id/latest_et"
-                android:layout_marginTop="3dp"
-                android:layout_marginBottom="3dp"
-                android:layout_marginLeft="40dp"
-                android:layout_marginRight="40dp"
-                android:layout_gravity="bottom"
-                android:background="@color/white"
-                android:layout_width="match_parent"
-                android:layout_height="39dp"
-                android:textSize="14sp"
-                android:textColor="#6F6F6F"
-                android:fontFamily="@font/lineseedkr_bd"
-                android:hint="최근 검색어 출력"
-                app:layout_constraintStart_toEndOf="@id/search_iv"
-                app:layout_constraintEnd_toStartOf="@id/arrowoutward_btn" />
-
-
-        </FrameLayout>
 
         <FrameLayout
             android:id="@+id/search_fl"
@@ -142,8 +86,7 @@
             android:layout_marginRight="20dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/latest_fl">
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
                 android:id="@+id/search_iv"
@@ -248,7 +191,7 @@
             android:layout_height="wrap_content"
             android:text="카테고리로 분류해서 알려드려요!"
             android:textSize="14sp"
-            android:layout_marginTop="5dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp"
             android:fontFamily="@font/lineseedkr_rg"
             android:textColor="#8C8C8C"
@@ -264,13 +207,13 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/category_tv2"
-            android:layout_marginTop="10dp">
+            android:layout_marginTop="20dp">
 
             <ImageButton
                 android:id="@+id/entertainment_btn1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gray_rectangle"
+                android:src="@drawable/culture"
                 android:layout_marginLeft="9dp"
                 android:layout_marginBottom="5dp"
                 android:background="@color/white"
@@ -280,7 +223,7 @@
                 android:id="@+id/cafe_btn2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gray_rectangle"
+                android:src="@drawable/cafe"
                 android:layout_marginLeft="27dp"
                 android:layout_marginBottom="5dp"
                 android:background="@color/white"
@@ -290,7 +233,7 @@
                 android:id="@+id/mart_btn3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gray_rectangle"
+                android:src="@drawable/market"
                 android:layout_marginLeft="27dp"
                 android:layout_marginBottom="5dp"
                 android:background="@color/white"
@@ -333,7 +276,7 @@
                 android:layout_marginLeft="9dp"
                 android:layout_marginTop="7dp"
                 android:layout_marginBottom="5dp"
-                android:src="@drawable/gray_rectangle"
+                android:src="@drawable/beauty"
                 android:background="@color/white"
                 android:contentDescription="뷰티"/>
 
@@ -341,7 +284,7 @@
                 android:id="@+id/restaurant_btn5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gray_rectangle"
+                android:src="@drawable/fashion"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="27dp"
                 android:layout_marginBottom="5dp"
@@ -352,7 +295,7 @@
                 android:id="@+id/else_btn6"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/gray_rectangle"
+                android:src="@drawable/restaurant"
                 android:layout_marginTop="7dp"
                 android:layout_marginLeft="27dp"
                 android:layout_marginBottom="5dp"
