@@ -1,7 +1,11 @@
 package com.kuit.couphone
 
 import android.os.Bundle
+import android.provider.Settings
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.findFragment
+import androidx.lifecycle.ReportFragment.Companion.reportFragment
 import com.kuit.couphone.databinding.ActivityMainBinding
 import com.kuit.couphone.ui.home.HomeFragment
 import com.kuit.couphone.ui.settings.SettingsFragment
@@ -27,14 +31,24 @@ class MainActivity : AppCompatActivity() {
 
     private fun initBottomNavigation() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.main_frm, homeFragment)
+            .replace(R.id.main_frm, MyLocationFragment())
             .commitAllowingStateLoss()
 
-        binding.bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
+        binding.fab.setOnClickListener {
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, HomeFragment())
+                .commitAllowingStateLoss()
+        }
+        binding.bottomNavigationView.setOnItemSelectedListener{
+            when (it.itemId) {
                 R.id.navigation_home -> {
-                    navigateToHomeFragment()
-                    true
+
+                    if(binding.bottomNavigationView.selectedItemId != it.itemId) {
+                        supportFragmentManager.beginTransaction()
+                            .replace(R.id.main_frm, MyLocationFragment())
+                            .commitAllowingStateLoss()
+                        return@setOnItemSelectedListener true
+                    }
                 }
                 R.id.navigation_settings -> {
                     val transaction = supportFragmentManager.beginTransaction()
