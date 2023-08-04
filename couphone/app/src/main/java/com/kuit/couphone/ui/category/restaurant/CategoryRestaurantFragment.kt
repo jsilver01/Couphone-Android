@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.kuit.couphone.R
 import com.kuit.couphone.databinding.FragmentCategoryBinding
 
 class CategoryRestaurantFragment : Fragment() {
@@ -25,5 +26,12 @@ class CategoryRestaurantFragment : Fragment() {
         binding.searchListVp.adapter = adapter
         binding.categoryTv.text = "'식당'"
         binding.searchTb.visibility = View.GONE
+        binding.backIv.setOnClickListener {
+            val homeFragment = com.kuit.couphone.ui.home.HomeFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, homeFragment)
+                .addToBackStack(null)
+                .commitAllowingStateLoss()
+        }
     }
 }

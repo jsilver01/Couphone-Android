@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
+import com.kuit.couphone.R
 import com.kuit.couphone.databinding.FragmentCategoryBinding
 
 class CategoryMartFragment : Fragment() {
@@ -26,5 +27,12 @@ class CategoryMartFragment : Fragment() {
         binding.searchListVp.adapter = adapter
         binding.categoryTv.text = "'마트'"
         binding.searchTb.visibility = View.GONE
+        binding.backIv.setOnClickListener {
+            val homeFragment = com.kuit.couphone.ui.home.HomeFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, homeFragment)
+                .addToBackStack(null)
+                .commitAllowingStateLoss()
+        }
     }
 }

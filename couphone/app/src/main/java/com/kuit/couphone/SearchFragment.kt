@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import androidx.activity.OnBackPressedCallback
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -94,8 +95,17 @@ class SearchFragment : Fragment() {
                 }
             }
 
-            override fun afterTextChanged(editable: Editable?) {
+            override fun afterTextChanged(editable: Editable?) {}
 
+        })
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val homeFragment = com.kuit.couphone.ui.home.HomeFragment()
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, homeFragment)
+                    .addToBackStack(null)
+                    .commitAllowingStateLoss()
             }
         })
         adapter!!.notifyDataSetChanged()
