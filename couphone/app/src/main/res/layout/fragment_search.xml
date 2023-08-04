@@ -13,7 +13,7 @@
         android:layout_height="45dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginTop="20dp"
-        android:hint="   지갑 속에서 헤매지 말고 쿠폰에서 검색!"
+        android:hint="지갑 속에서 헤매지 말고 쿠폰에서 검색!"
         android:textSize="14sp"
         android:fontFamily="@font/line_seed_sans_bold"
         android:background="@drawable/search_tab_green"

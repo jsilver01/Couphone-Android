@@ -45,6 +45,7 @@ class CategoryFragment : Fragment() {
         adapter!!.setOnItemClickListener(object : BaseItemAdapter.OnItemClickListener{
             override fun onItemClick(itemList: StoreInfo) {
                 parentFragmentManager.beginTransaction().replace(R.id.main_frm, InformationFragment()).commit()
+
             }
         })
     }
