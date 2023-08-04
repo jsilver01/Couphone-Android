@@ -3,85 +3,107 @@ package com.example.stickode4
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
 import android.widget.EditText
+import androidx.activity.OnBackPressedCallback
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.myapplication.SearchAdapter
+import com.kuit.couphone.SearchAdapter
 import com.kuit.couphone.R
-import com.kuit.couphone.SearchItem
+import com.kuit.couphone.SearchResultFragment
+import com.kuit.couphone.data.LocalSearchDB
+import com.kuit.couphone.data.LocalSearchEntity
+import com.kuit.couphone.databinding.FragmentSearchBinding
 import java.util.Locale
 
 class SearchFragment : Fragment() {
 
-    private lateinit var searchItemList: ArrayList<SearchItem>
-    private lateinit var filteredList: ArrayList<SearchItem>
-    private lateinit var searchAdapter: SearchAdapter
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var searchItemList: ArrayList<LocalSearchEntity>
+    private lateinit var filteredList: ArrayList<LocalSearchEntity>
+    var adapter : SearchAdapter?= null
     private lateinit var linearLayoutManager: LinearLayoutManager
-    private lateinit var searchET: EditText
-
+    private lateinit var localSearchDB: LocalSearchDB
+    lateinit var binding: FragmentSearchBinding
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_search, container, false)
-
-        recyclerView = view.findViewById(R.id.recyclerView_list)
-        searchET = view.findViewById(R.id.searchBar)
+        binding = FragmentSearchBinding.inflate(inflater, container, false)
 
         filteredList = ArrayList()
         searchItemList = ArrayList()
-
-        searchAdapter = SearchAdapter(searchItemList)
         linearLayoutManager = LinearLayoutManager(requireContext())
-        recyclerView.layoutManager = linearLayoutManager
-        recyclerView.adapter = searchAdapter
+        localSearchDB = LocalSearchDB.getInstance(requireContext())!!
+        searchItemList = localSearchDB.SearchKeywordDAO().getKeyWordList("temp") as ArrayList<LocalSearchEntity>
+        adapter = SearchAdapter(searchItemList)
+        binding.recyclerViewList.adapter = adapter
+        binding.recyclerViewList.layoutManager = LinearLayoutManager(context)
+        Log.d("dbupdateeeeeeeeeee",searchItemList.toString())
+        adapter!!.setOnItemClickListener(object : SearchAdapter.OnItemClickListener{
+            override fun onItemClick(keyword: LocalSearchEntity) {
+                val bundle = Bundle()
+                bundle.putString("key", keyword.keyword)
 
-        searchItemList.add(SearchItem("apple"))
-        searchItemList.add(SearchItem("banana"))
-        searchItemList.add(SearchItem("candy"))
-        searchItemList.add(SearchItem("hello"))
-        searchItemList.add(SearchItem("line"))
-        searchItemList.add(SearchItem("cup"))
-        searchItemList.add(SearchItem("pumpkin"))
-        searchItemList.add(SearchItem("king"))
-        searchItemList.add(SearchItem("coffee"))
-        searchItemList.add(SearchItem("fight"))
-        searchItemList.add(SearchItem("lemon"))
-        searchItemList.add(SearchItem("dance"))
-        searchItemList.add(SearchItem("xml"))
-        searchItemList.add(SearchItem("queen"))
-        searchItemList.add(SearchItem("zebra"))
-        searchItemList.add(SearchItem("captain"))
-        searchItemList.add(SearchItem("summer"))
-        searchItemList.add(SearchItem("meeting"))
-        searchItemList.add(SearchItem("notebook"))
-        searchItemList.add(SearchItem("condition"))
+                val passBundleBFragment = SearchResultFragment()
+                passBundleBFragment.arguments = bundle
+                parentFragmentManager.beginTransaction().replace(R.id.main_frm, passBundleBFragment).commit()
+            }
 
-        searchAdapter.notifyDataSetChanged()
+        })
+        binding.submitBtn.setOnClickListener {
+            //유효성검사
 
-        searchET.addTextChangedListener(object : TextWatcher {
+            val localDao = LocalSearchDB.getInstance(requireContext())!!.SearchKeywordDAO()
+            if(localDao.getresultkeyword(binding.searchBar.text.toString())==null) {
+                localDao.insertSearchKeyword(
+                    LocalSearchEntity(
+                        localDao.getCount(),
+                        "temp",
+                        binding.searchBar.text.toString()
+                    )
+                )
+            }
+            //검색화면 이동
+            val bundle = Bundle()
+            bundle.putString("key", binding.searchBar.text.toString())
+            val passBundleBFragment = SearchResultFragment()
+            passBundleBFragment.arguments = bundle
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, passBundleBFragment).commit()
+            Log.d("dbupdateeeeeeeeeee","업데이트완룓ㄷㄷㄷㄷㄷㄷㄷㄷㄷ")
+        }
+        binding.searchBar.setOnEditorActionListener(getEditorActionListener(binding.submitBtn))
+        binding.searchBar.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence?, i: Int, i1: Int, i2: Int) {}
 
             override fun onTextChanged(charSequence: CharSequence?, i: Int, i1: Int, i2: Int) {
-                val searchText = searchET.text.toString()
+                val searchText = binding.searchBar.text.toString()
                 if (searchText.isEmpty()) {
-                    searchAdapter.filterList(searchItemList)
+                    adapter!!.filterList(searchItemList)
                 } else {
                     searchFilter(searchText)
                 }
             }
 
-            override fun afterTextChanged(editable: Editable?) {
+            override fun afterTextChanged(editable: Editable?) {}
 
-            }
         })
 
-        return view
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                val homeFragment = com.kuit.couphone.ui.home.HomeFragment()
+                parentFragmentManager.beginTransaction()
+                    .replace(R.id.main_frm, homeFragment)
+                    .addToBackStack(null)
+                    .commitAllowingStateLoss()
+            }
+        })
+        adapter!!.notifyDataSetChanged()
+        return binding.root
     }
 
     private fun searchFilter(searchText: String) {
@@ -91,12 +113,20 @@ class SearchFragment : Fragment() {
             filteredList.addAll(searchItemList)
         } else {
             for (item in searchItemList) {
-                if (item.word.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(Locale.getDefault()))) {
+                if (item.keyword.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(Locale.getDefault()))) {
                     filteredList.add(item)
                 }
             }
         }
 
-        searchAdapter.filterList(filteredList)
+        adapter!!.filterList(filteredList)
+    }
+    fun getEditorActionListener(view: View): TextView.OnEditorActionListener { // 키보드에서 done(완료) 클릭 시 , 원하는 뷰 클릭되게 하는 메소드
+        return TextView.OnEditorActionListener { textView, actionId, keyEvent ->
+            if (actionId == EditorInfo.IME_ACTION_DONE) {
+                view.callOnClick()
+            }
+            false
+        }
     }
 }

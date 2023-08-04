@@ -150,7 +150,7 @@
                 app:layout_constraintStart_toEndOf="@id/couphone_issueddate_tv"
                 app:layout_constraintTop_toBottomOf="@id/visitdate_tv" />
 
-            <ImageView
+            <!--<ImageView
                 android:id="@+id/couphone_issued_iv"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
@@ -171,7 +171,7 @@
                 app:layout_constraintBottom_toBottomOf="@id/couphone_issued_iv"
                 app:layout_constraintEnd_toEndOf="@id/couphone_issued_iv"
                 app:layout_constraintStart_toStartOf="@id/couphone_issued_iv"
-                app:layout_constraintTop_toTopOf="@id/couphone_issued_iv" />
+                app:layout_constraintTop_toTopOf="@id/couphone_issued_iv" />-->
 
             <TextView
                 android:id="@+id/couphone_info_tv"
@@ -207,16 +207,97 @@
                 app:layout_constraintStart_toStartOf="@id/cafe_photo_iv"
                 app:layout_constraintTop_toBottomOf="@id/couphone_info_tv" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+
+
+
+
+            <FrameLayout
+                android:id="@+id/information_fl"
+                android:layout_width="330dp"
+                android:layout_height="35dp"
+                android:background="@drawable/register_button"
+                android:layout_marginTop="15dp"
+                app:layout_constraintStart_toStartOf="@id/couphone_count_background_iv"
+                app:layout_constraintEnd_toEndOf="@id/couphone_count_background_iv"
+                app:layout_constraintTop_toBottomOf="@id/couphone_info_tv2">
+
+                <TextView
+                    android:id="@+id/username_fl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="'KU123123'"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/line_seed_sans"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_vertical"
+                    android:paddingVertical="10dp"
+                    android:layout_marginLeft="20dp"
+                    app:layout_constraintStart_toStartOf="@id/information_fl"
+                    app:layout_constraintTop_toTopOf="@id/information_fl"/>
+
+                <TextView
+                    android:id="@+id/count_fl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="님의 누적 쿠폰 갯수 : "
+                    android:textSize="14sp"
+                    android:fontFamily="@font/line_seed_sans"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center_horizontal"
+                    android:padding="10dp"
+                    android:layout_marginRight="5dp"
+                    app:layout_constraintStart_toEndOf="@id/username_fl_tv"
+                    app:layout_constraintTop_toTopOf="@id/information_fl"/>
+
+                <TextView
+                    android:id="@+id/count_total_fl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="총 6개"
+                    android:textSize="14sp"
+                    android:fontFamily="@font/line_seed_sans"
+                    android:textColor="@color/white"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="60dp"
+                    android:padding="10dp"/>
+
+                <ImageView
+                    android:id="@+id/dday_fl_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="30dp"
+                    android:paddingTop="5dp"
+                    android:src="@drawable/dday_rectangle"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="15dp"/>
+
+                <TextView
+                    android:id="@+id/dday_fl_tv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="D-31"
+                    android:textSize="13sp"
+                    android:textColor="@color/green"
+                    android:fontFamily="@font/line_seed_sans"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="23dp"
+                    android:layout_marginTop="11dp"/>
+
+
+
+
+            </FrameLayout>
+
+            <!--<androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/couphone_count_area"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_width="320dp"
+                android:layout_height="35dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginHorizontal="30dp"
                 android:background="@drawable/register_button"
                 android:orientation="vertical"
-                android:padding="8dp"
-                app:layout_constraintEnd_toStartOf="@id/date_count_area"
+                android:paddingHorizontal="20dp"
                 app:layout_constraintStart_toStartOf="@id/couphone_count_background_iv"
+                app:layout_constraintEnd_toEndOf="@id/couphone_count_background_iv"
                 app:layout_constraintTop_toBottomOf="@id/couphone_info_tv2">
 
                 <TextView
@@ -249,7 +330,7 @@
                     android:text="총 6개"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
+
                     app:layout_constraintStart_toEndOf="@id/couphone_count_tv"
                     app:layout_constraintTop_toTopOf="parent"
                     android:layout_marginStart="3dp"/>
@@ -259,13 +340,13 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/date_count_area"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="27.5dp"
+                android:layout_marginRight="20dp"
                 android:background="@drawable/border_background"
                 android:orientation="vertical"
                 android:padding="8dp"
-                app:layout_constraintEnd_toEndOf="@id/couphone_count_background_iv"
-                app:layout_constraintStart_toEndOf="@id/couphone_count_area"
+                app:layout_constraintEnd_toEndOf="@id/couphone_count_area"
                 app:layout_constraintTop_toBottomOf="@id/couphone_info_tv2">
 
                 <TextView
@@ -279,7 +360,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>-->
 
             <ImageView
                 android:id="@+id/couphone_count_background_iv"
@@ -288,7 +369,7 @@
                 android:layout_marginTop="15dp"
                 android:src="@drawable/couphone_background"
                 app:layout_constraintStart_toStartOf="@id/cafe_photo_iv"
-                app:layout_constraintTop_toBottomOf="@id/couphone_count_area" />
+                app:layout_constraintTop_toBottomOf="@id/information_fl" />
 
             <TextView
                 android:id="@+id/stamp_info_tv"

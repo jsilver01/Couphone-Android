@@ -67,15 +67,17 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonLogin.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
+    }
+    private fun checkValidUser(phonenum: String, pw: String): Boolean {
+            //서버에서 해당 phonenum 와 pw로 사용자 찾기
+            return true //임시
             loginWithKakao()
         }
     }
 
-
-    private fun checkValidUser(phonenum: String, pw: String): Boolean {
-            //서버에서 해당 phonenum 와 pw로 사용자 찾기
-            return true //임시
-    }
     private fun loginWithKakao() {
         if (AuthApiClient.instance.hasToken()) {
             // accessToken 정보 제공(만료된 경우 갱신된 accessToken 제공)

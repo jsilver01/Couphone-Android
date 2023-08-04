@@ -54,6 +54,9 @@
         <activity
             android:name=".RegisterActivity"
             android:exported="true"/>
+        <activity
+            android:name=".InformationActivity"
+            android:exported="true"/>
 
     </application>
 

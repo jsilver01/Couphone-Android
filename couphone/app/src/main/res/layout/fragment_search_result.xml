@@ -14,9 +14,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp"
-        android:clickable="true"
-        android:onClick="onBackButtonClicked"/>
+        android:layout_marginTop="10dp"/>
 
 
     <ImageView
@@ -47,53 +45,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:fontFamily="@font/tway_fly"
-        android:text="카테고리입니다."
+        android:text="의 검색결과 입니다."
         android:textColor="#090909"
         android:textSize="24sp"
         app:layout_constraintStart_toEndOf="@id/category_tv"
         app:layout_constraintTop_toTopOf="parent"/>
-
-    <LinearLayout
-        android:id="@+id/filter_button_ll"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:gravity="center"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_top_tv">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="@drawable/filter_btn_background"
-            android:fontFamily="@font/line_seed_sans_bold"
-            android:text="쿠폰 현황순"
-            android:textColor="@color/green"
-            android:textSize="12sp"
-            app:tabIndicatorHeight="0dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:background="@drawable/filter_btn_background"
-            android:fontFamily="@font/line_seed_sans_bold"
-            android:text="인기 조회순"
-            android:textColor="@color/green"
-            android:textSize="12sp"
-            app:tabIndicatorHeight="0dp" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
-            android:layout_height="30dp"
-            android:layout_marginHorizontal="10dp"
-            android:background="@drawable/filter_btn_background"
-            android:fontFamily="@font/line_seed_sans_bold"
-            android:text="가나다순"
-            android:textColor="@color/green"
-            android:textSize="12sp"
-            app:tabIndicatorHeight="0dp" />
-    </LinearLayout>
 
     <ScrollView
         android:id="@+id/search_record_sv"
@@ -101,7 +57,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/filter_button_ll">
+        app:layout_constraintTop_toBottomOf="@id/search_top_tv">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

@@ -32,7 +32,7 @@
         android:id="@+id/detail_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="지류쿠폰과 핸드폰의 만남"
+        android:text="쿠폰을 폰 안에"
         android:fontFamily="@font/tway_fly"
         android:textColor="@color/white"
         android:textSize="13sp"

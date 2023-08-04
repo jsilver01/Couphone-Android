@@ -29,6 +29,14 @@
         android:layout_marginStart="10dp"
         android:src="@drawable/couphone_count_box"/>
     <ImageView
+        android:id="@+id/couphone_dday_background_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/dday_rectangle"
+        app:layout_constraintStart_toEndOf="@id/couphone_count_background_iv"
+        app:layout_constraintTop_toTopOf="@id/couphone_count_background_iv"
+        android:layout_marginLeft="10dp"/>
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
