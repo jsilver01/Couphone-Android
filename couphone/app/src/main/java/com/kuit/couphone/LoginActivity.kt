@@ -67,14 +67,15 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonLogin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
+            //회원가입이면 --> 서버로부터 회원가입인지 로그인인지 판별
+
+            //회원가입이면
+            val intent = Intent(this, RegisterActivity::class.java)
             startActivity(intent)
-        }
-    }
-    private fun checkValidUser(phonenum: String, pw: String): Boolean {
-            //서버에서 해당 phonenum 와 pw로 사용자 찾기
-            return true //임시
-            loginWithKakao()
+            finish()
+
+            //로그인이면
+            //loginWithKakao()
         }
     }
 

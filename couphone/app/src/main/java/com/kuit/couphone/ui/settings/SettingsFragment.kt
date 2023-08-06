@@ -1,11 +1,14 @@
 package com.kuit.couphone.ui.settings
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.kakao.sdk.user.UserApiClient
 import com.kuit.couphone.LoginActivity
 import com.kuit.couphone.MyCouponFragment
 import com.kuit.couphone.R
@@ -32,12 +35,29 @@ class SettingsFragment : Fragment() {
         }
 
         binding.logoutTv.setOnClickListener {
+            // 로그아웃
+            UserApiClient.instance.logout { error ->
+                if (error != null) {
+                    Log.e("test1234", "로그아웃 실패. SDK에서 토큰 삭제됨", error)
+                }
+                else {
+                    Log.i("test1234", "로그아웃 성공. SDK에서 토큰 삭제됨")
+                }
+            }
             val logoutIntent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(logoutIntent)
             requireActivity().finish()
         }
 
         binding.rightArrowIv2.setOnClickListener {
+            UserApiClient.instance.unlink { error ->
+                if (error != null) {
+                    Log.e("test1234", "로그아웃 실패. SDK에서 토큰 삭제됨", error)
+                }
+                else {
+                    Log.i("test1234", "로그아웃 성공. SDK에서 토큰 삭제됨")
+                }
+            }
             val logoutIntent = Intent(requireContext(), LoginActivity::class.java)
             startActivity(logoutIntent)
             requireActivity().finish()

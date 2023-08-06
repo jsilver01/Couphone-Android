@@ -39,10 +39,9 @@ class MainActivity : AppCompatActivity() {
                 .replace(R.id.main_frm, HomeFragment())
                 .commitAllowingStateLoss()
         }
-        binding.bottomNavigationView.setOnItemSelectedListener{
+        binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_home -> {
-
                     if(binding.bottomNavigationView.selectedItemId != it.itemId) {
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.main_frm, MyLocationFragment())
@@ -50,17 +49,18 @@ class MainActivity : AppCompatActivity() {
                         return@setOnItemSelectedListener true
                     }
                 }
+
                 R.id.navigation_settings -> {
-                    val transaction = supportFragmentManager.beginTransaction()
-                    transaction.replace(R.id.main_frm, SettingsFragment())
-                    transaction.addToBackStack(null)
-                    transaction.commitAllowingStateLoss()
-                    true
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.main_frm, SettingsFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
                 }
-                else -> false
             }
+            false
         }
     }
+
 
     private fun navigateToHomeFragment() {
         supportFragmentManager.beginTransaction()
@@ -83,3 +83,4 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
+
