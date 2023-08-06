@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.example.stickode4.SearchFragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.kuit.couphone.data.AddressInfo
@@ -64,6 +65,9 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
         }
         binding.mygps.setOnClickListener{
             move_to_my_gps()
+        }
+        binding.searchFl.setOnClickListener{
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, SearchMapFragment()).commit()
         }
         binding.mapView.setMapViewEventListener(this)
 

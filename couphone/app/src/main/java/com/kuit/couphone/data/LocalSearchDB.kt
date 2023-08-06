@@ -5,7 +5,7 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 
-@Database(entities = [LocalSearchEntity::class], version = 2)
+@Database(entities = [LocalSearchEntity::class], version = 4)
 abstract class LocalSearchDB : RoomDatabase() {
     abstract fun SearchKeywordDAO() : LocalSearchDAO
 

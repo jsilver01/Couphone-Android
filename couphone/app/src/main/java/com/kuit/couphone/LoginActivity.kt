@@ -70,12 +70,12 @@ class LoginActivity : AppCompatActivity() {
             //회원가입이면 --> 서버로부터 회원가입인지 로그인인지 판별
 
             //회원가입이면
-            val intent = Intent(this, RegisterActivity::class.java)
-            startActivity(intent)
-            finish()
+//            val intent = Intent(this, RegisterActivity::class.java)
+//            startActivity(intent)
+//            finish()
 
             //로그인이면
-            //loginWithKakao()
+            loginWithKakao()
         }
     }
 

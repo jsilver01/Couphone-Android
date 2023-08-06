@@ -1,4 +1,4 @@
-package com.example.stickode4
+package com.kuit.couphone
 
 import android.os.Bundle
 import android.text.Editable
@@ -8,21 +8,17 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
-import androidx.activity.OnBackPressedCallback
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.kuit.couphone.SearchAdapter
-import com.kuit.couphone.R
-import com.kuit.couphone.SearchResultFragment
 import com.kuit.couphone.data.LocalSearchDB
 import com.kuit.couphone.data.LocalSearchEntity
 import com.kuit.couphone.databinding.FragmentSearchBinding
-import java.util.Locale
+import java.util.*
+import kotlin.collections.ArrayList
 
-class SearchFragment : Fragment() {
-
+class SearchMapFragment : Fragment() {
     private lateinit var searchItemList: ArrayList<LocalSearchEntity>
     private lateinit var filteredList: ArrayList<LocalSearchEntity>
     var adapter : SearchAdapter?= null
@@ -39,7 +35,7 @@ class SearchFragment : Fragment() {
         searchItemList = ArrayList()
         linearLayoutManager = LinearLayoutManager(requireContext())
         localSearchDB = LocalSearchDB.getInstance(requireContext())!!
-        searchItemList = localSearchDB.SearchKeywordDAO().getKeyWordList("temp",1) as ArrayList<LocalSearchEntity>
+        searchItemList = localSearchDB.SearchKeywordDAO().getKeyWordList("temp",2) as ArrayList<LocalSearchEntity>
         adapter = SearchAdapter(searchItemList)
         binding.recyclerViewList.adapter = adapter
         binding.recyclerViewList.layoutManager = LinearLayoutManager(context)
@@ -49,7 +45,7 @@ class SearchFragment : Fragment() {
                 val bundle = Bundle()
                 bundle.putString("key", keyword.keyword)
 
-                val passBundleBFragment = SearchResultFragment()
+                val passBundleBFragment = MyLocationFragment()
                 passBundleBFragment.arguments = bundle
                 parentFragmentManager.beginTransaction().replace(R.id.main_frm, passBundleBFragment).commit()
             }
@@ -62,7 +58,7 @@ class SearchFragment : Fragment() {
             if(localDao.getresultkeyword(binding.searchBar.text.toString())==null) {
                 localDao.insertSearchKeyword(
                     LocalSearchEntity(
-                        1,
+                        2,
                         localDao.getCount(),
                         "temp",
                         binding.searchBar.text.toString()
@@ -72,7 +68,7 @@ class SearchFragment : Fragment() {
             //검색화면 이동
             val bundle = Bundle()
             bundle.putString("key", binding.searchBar.text.toString())
-            val passBundleBFragment = SearchResultFragment()
+            val passBundleBFragment = MyLocationFragment()
             passBundleBFragment.arguments = bundle
             parentFragmentManager.beginTransaction().replace(R.id.main_frm, passBundleBFragment).commit()
             Log.d("dbupdateeeeeeeeeee","업데이트완룓ㄷㄷㄷㄷㄷㄷㄷㄷㄷ")
@@ -114,7 +110,8 @@ class SearchFragment : Fragment() {
             filteredList.addAll(searchItemList)
         } else {
             for (item in searchItemList) {
-                if (item.keyword.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(Locale.getDefault()))) {
+                if (item.keyword.toLowerCase(Locale.getDefault()).contains(searchText.toLowerCase(
+                        Locale.getDefault()))) {
                     filteredList.add(item)
                 }
             }

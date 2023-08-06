@@ -85,7 +85,7 @@ class RegisterActivity : AppCompatActivity() {
 
         if (isValidPassword(userpw)) {
             val user = User(username, phonenum, userpw)
-            Toast.makeText(this, " tjdrhd", Toast.LENGTH_LONG).show()
+            //user 정보 서버로 보내기
             Log.d("test12345","success")
 
         } else {

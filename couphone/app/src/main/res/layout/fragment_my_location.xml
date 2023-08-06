@@ -19,6 +19,7 @@
             android:id="@+id/map_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -26,62 +27,6 @@
             android:orientation="vertical"
             android:id="@+id/map_search_ll"
             app:layout_constraintTop_toTopOf="parent">
-
-            <FrameLayout
-                android:id="@+id/latest_fl"
-                android:layout_width="344dp"
-                android:layout_height="70dp"
-                android:background="@drawable/search_tab_gray"
-                android:layout_marginTop="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/search_fl">
-
-
-                <ImageView
-                    android:id="@+id/latest_iv"
-                    android:layout_width="17dp"
-                    android:layout_height="17dp"
-                    android:layout_marginLeft="12dp"
-                    android:layout_marginBottom="15dp"
-                    android:background="@drawable/stopwatch"
-                    android:layout_gravity="bottom"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/arrowoutward_btn"
-                    android:layout_width="22dp"
-                    android:layout_height="22dp"
-                    android:layout_gravity="right"
-                    android:layout_marginTop="36dp"
-                    android:layout_marginLeft="300dp"
-                    android:layout_marginRight="12dp"
-                    android:background="@drawable/group_1736"
-                    app:layout_constraintStart_toEndOf="@id/latest_fl"/>
-
-                <EditText
-                    android:id="@+id/latest_et"
-                    android:layout_marginTop="3dp"
-                    android:layout_marginBottom="3dp"
-                    android:layout_marginLeft="40dp"
-                    android:layout_marginRight="40dp"
-                    android:layout_gravity="bottom"
-                    android:background="@color/white"
-                    android:layout_width="match_parent"
-                    android:layout_height="39dp"
-                    android:textSize="14sp"
-                    android:textColor="#6F6F6F"
-                    android:fontFamily="@font/lineseedkr_bd"
-                    android:hint="최근 검색어 출력"
-                    app:layout_constraintStart_toEndOf="@id/search_iv"
-                    app:layout_constraintEnd_toStartOf="@id/arrowoutward_btn" />
-
-
-            </FrameLayout>
 
             <FrameLayout
                 android:id="@+id/search_fl"
@@ -93,7 +38,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/latest_fl">
+                >
 
                 <ImageView
                     android:id="@+id/search_iv"
@@ -116,7 +61,7 @@
                     android:background="@drawable/search_arrow" />
 
 
-                <EditText
+                <TextView
                     android:id="@+id/search_et"
                     android:layout_marginTop="3dp"
                     android:layout_marginBottom="3dp"
@@ -128,7 +73,8 @@
                     android:textSize="14sp"
                     android:textColor="#BCBCBC"
                     android:fontFamily="@font/lineseedkr_bd"
-                    android:hint="지갑 속에서 헤매지말고 쿠폰에서 검색!"
+                    android:hint="지명 검색해서 찾기"
+                    android:paddingTop="12dp"
                     app:layout_constraintStart_toEndOf="@id/search_iv"
                     app:layout_constraintEnd_toStartOf="@id/arrowupward_btn" />
 
