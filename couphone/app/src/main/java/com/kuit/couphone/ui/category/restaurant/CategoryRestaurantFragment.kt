@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kuit.couphone.*
-import com.kuit.couphone.data.LocalSearchEntity
 import com.kuit.couphone.data.StoreInfo
 import com.kuit.couphone.databinding.FragmentCategoryBinding
 import com.kuit.couphone.ui.home.HomeFragment

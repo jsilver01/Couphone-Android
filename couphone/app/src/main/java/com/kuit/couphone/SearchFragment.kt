@@ -8,7 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
-import android.widget.EditText
 import androidx.activity.OnBackPressedCallback
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -16,8 +15,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.kuit.couphone.SearchAdapter
 import com.kuit.couphone.R
 import com.kuit.couphone.SearchResultFragment
-import com.kuit.couphone.data.LocalSearchDB
-import com.kuit.couphone.data.LocalSearchEntity
+import com.kuit.couphone.data.SearchRoomDB.LocalSearchDB
+import com.kuit.couphone.data.SearchRoomDB.LocalSearchEntity
 import com.kuit.couphone.databinding.FragmentSearchBinding
 import java.util.Locale
 

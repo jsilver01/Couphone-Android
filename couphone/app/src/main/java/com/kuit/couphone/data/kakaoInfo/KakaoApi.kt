@@ -1,7 +1,5 @@
-package com.kuit.couphone
 
-import com.kuit.couphone.data.AddressInfo
-import com.kuit.couphone.data.ResultSearchKeyword
+import com.kuit.couphone.data.kakaoInfo.AddressInfo
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header

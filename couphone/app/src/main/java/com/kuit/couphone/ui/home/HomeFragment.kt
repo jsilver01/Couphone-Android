@@ -7,8 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.stickode4.SearchFragment
 import com.kuit.couphone.R
-import com.kuit.couphone.data.LocalSearchDB
-import com.kuit.couphone.data.LocalSearchEntity
 import com.kuit.couphone.databinding.FragmentHomeBinding
 import com.kuit.couphone.ui.category.beauty.CategoryBeautyFragment
 import com.kuit.couphone.ui.category.cafe.CategoryFragment

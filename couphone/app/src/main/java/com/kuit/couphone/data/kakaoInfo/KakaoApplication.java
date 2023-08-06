@@ -1,4 +1,4 @@
-package com.kuit.couphone;
+package com.kuit.couphone.data.kakaoInfo;
 
 import android.app.Application;
 

@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.kuit.couphone.data.LocalSearchEntity
+import com.kuit.couphone.data.SearchRoomDB.LocalSearchEntity
 import com.kuit.couphone.databinding.ItemSearchBinding
 
 class SearchAdapter(private val searchItemList: ArrayList<LocalSearchEntity>) : RecyclerView.Adapter<SearchAdapter.ViewHolder>() {

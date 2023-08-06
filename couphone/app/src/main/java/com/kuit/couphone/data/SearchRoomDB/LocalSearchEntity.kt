@@ -1,4 +1,4 @@
-package com.kuit.couphone.data
+package com.kuit.couphone.data.SearchRoomDB
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

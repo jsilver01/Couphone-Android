@@ -1,4 +1,4 @@
-package com.kuit.couphone.data
+package com.kuit.couphone.data.SearchRoomDB
 
 import android.content.Context
 import androidx.room.Database
