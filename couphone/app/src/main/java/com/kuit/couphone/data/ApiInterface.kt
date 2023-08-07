@@ -1,6 +1,5 @@
 package com.kuit.couphone.data
 
-import android.telecom.Call
 import com.kuit.couphone.data.kakaoInfo.AddressInfo
 import retrofit2.Call
 import retrofit2.http.*

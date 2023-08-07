@@ -17,6 +17,7 @@ import com.kuit.couphone.SearchResultFragment
 import com.kuit.couphone.data.SearchRoomDB.LocalSearchDB
 import com.kuit.couphone.data.SearchRoomDB.LocalSearchEntity
 import com.kuit.couphone.databinding.FragmentSearchBinding
+import com.kuit.couphone.ui.home.HomeFragment
 import java.util.Locale
 
 class SearchFragment : Fragment() {
