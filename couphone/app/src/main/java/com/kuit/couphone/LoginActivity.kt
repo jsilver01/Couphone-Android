@@ -15,8 +15,11 @@ import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.user.UserApiClient
+import com.kuit.couphone.data.*
 import com.kuit.couphone.databinding.ActivityLoginBinding
 import com.kuit.couphone.ui.home.HomeFragment
+import retrofit2.Call
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
@@ -56,7 +59,28 @@ class LoginActivity : AppCompatActivity() {
         else if (token != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            Log.d("test","1234")
+            var userinfo : User
+            UserApiClient.instance.me { user, error ->
+                if (error != null) {
+                    Log.e(TAG, "사용자 정보 요청 실패", error)
+                } else if (user != null) {
+                    Log.d(
+                        TAG,
+                        "사용자 정보 요청 성공" +
+                                "\n회원번호: ${user.id}" +
+                                "\n이메일: ${user.kakaoAccount?.email}" +
+                                "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}"
+                    )
+                    userinfo = user.kakaoAccount?.email?.let { user!!.kakaoAccount?.profile?.nickname?.let { it1 ->
+                        User(it,
+                            it1,"admin")
+                    } }!!
+                    post_user_info(userinfo)
+                }
+
+            }
+
             finish()
         }
     }
@@ -67,13 +91,13 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonLogin.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-    }
-    private fun checkValidUser(phonenum: String, pw: String): Boolean {
-            //서버에서 해당 phonenum 와 pw로 사용자 찾기
-            return true //임시
+            //회원가입이면 --> 서버로부터 회원가입인지 로그인인지 판별
+
+            //회원가입이면
+//            val intent = Intent(this, RegisterActivity::class.java)
+//            startActivity(intent)
+//            finish()
+            //로그인이면
             loginWithKakao()
         }
     }
@@ -85,9 +109,32 @@ class LoginActivity : AppCompatActivity() {
                 if (error == null) {
                     Log.d(TAG, "accessTokenInfo 유효성 체크 성공, 회원번호 >> ${accessToken?.id}")
                     getKakaoUser()
+//                    var user : User = User()
+//                    post_user_info(user)
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    Log.d("test","1234")
+                    var userinfo : User
+                    UserApiClient.instance.me { user, error ->
+                        if (error != null) {
+                            Log.e(TAG, "사용자 정보 요청 실패", error)
+                        } else if (user != null) {
+                            Log.d(
+                                TAG,
+                                "사용자 정보 요청 성공" +
+                                        "\n회원번호: ${user.id}" +
+                                        "\n이메일: ${user.kakaoAccount?.email}" +
+                                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}"
+                            )
+                            userinfo = user.kakaoAccount?.email?.let { user!!.kakaoAccount?.profile?.nickname?.let { it1 ->
+                                User(it,
+                                    it1,"admin")
+                            } }!!
+                            post_user_info(userinfo)
+                        }
+
+                    }
+
                     finish()
                 } else {
                     Log.d(TAG, "accessTokenInfo 유효성 체크 실패")
@@ -126,7 +173,35 @@ class LoginActivity : AppCompatActivity() {
                             "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
                             "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}"
                 )
+                val userinfo =  user.kakaoAccount?.email?.let { user.kakaoAccount?.profile?.nickname?.let { it1 ->
+                    User(it, it1,"admin")
+                } }
             }
+
         }
+    }
+    private fun post_user_info(user : User){
+        val service =  getRetrofit().create(ApiInterface::class.java)
+        service.postUserInfo(user)
+            .enqueue( object : retrofit2.Callback<UserResponse>{
+                override fun onResponse(
+                    call: Call<UserResponse>,
+                    response: Response<UserResponse>
+                ) {
+                    if(response.isSuccessful) {
+                        val resp = response.body()
+                        user_token = resp!!.result.accessToken
+                        Log.d("Postuserinfo", resp.toString())
+                    }
+                    else{
+                        Log.d("Postuserinfo", response.toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    Log.d("Postuserinfo",t.message.toString())
+                }
+
+            })
     }
 }

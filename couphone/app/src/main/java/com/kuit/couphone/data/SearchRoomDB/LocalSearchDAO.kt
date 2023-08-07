@@ -1,4 +1,4 @@
-package com.kuit.couphone.data
+package com.kuit.couphone.data.SearchRoomDB
 
 import androidx.room.*
 
@@ -12,8 +12,8 @@ interface  LocalSearchDAO{
     fun delete(searchKeyword: LocalSearchEntity)
     @Query("SELECT COUNT(*) FROM local_search_table")
     fun getCount() : Int
-    @Query("SELECT * FROM local_search_table WHERE userId = :userId order by id ")
-    fun getKeyWordList(userId : String) : List<LocalSearchEntity>
+    @Query("SELECT * FROM local_search_table WHERE userId = :userId and type = :type order by id ")
+    fun getKeyWordList(userId : String,type : Int) : List<LocalSearchEntity>
     @Query("SELECT * FROM local_search_table WHERE keyword = :keyword")
     fun getresultkeyword(keyword : String) : LocalSearchEntity?
 

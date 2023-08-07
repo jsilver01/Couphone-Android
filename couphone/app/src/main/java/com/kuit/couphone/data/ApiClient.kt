@@ -1,10 +1,10 @@
-package com.kuit.couphone
+package com.kuit.couphone.data
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 
-class KakaoApiClient {
+class ApiClient {
     private val BASE_URL = "https://dapi.kakao.com/"
     private var retrofit: Retrofit? = null
     val apiClient: Retrofit?

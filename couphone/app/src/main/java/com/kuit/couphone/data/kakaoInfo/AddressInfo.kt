@@ -1,4 +1,4 @@
-package com.kuit.couphone.data
+package com.kuit.couphone.data.kakaoInfo
 
 data class AddressInfo(
     var meta: Meta,                // 장소 메타데이터

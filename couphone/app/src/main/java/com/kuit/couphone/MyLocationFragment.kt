@@ -1,5 +1,6 @@
 package com.kuit.couphone
 
+import KakaoAPI
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.*
@@ -21,7 +22,7 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.kuit.couphone.data.AddressInfo
+import com.kuit.couphone.data.kakaoInfo.AddressInfo
 import com.kuit.couphone.databinding.FragmentMyLocationBinding
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
@@ -64,6 +65,9 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
         }
         binding.mygps.setOnClickListener{
             move_to_my_gps()
+        }
+        binding.searchFl.setOnClickListener{
+            parentFragmentManager.beginTransaction().replace(R.id.main_frm, SearchMapFragment()).commit()
         }
         binding.mapView.setMapViewEventListener(this)
 
