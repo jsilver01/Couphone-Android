@@ -15,10 +15,7 @@ import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.user.UserApiClient
-import com.kuit.couphone.data.ApiInterface
-import com.kuit.couphone.data.User
-import com.kuit.couphone.data.UserInfoResponse
-import com.kuit.couphone.data.getRetrofit
+import com.kuit.couphone.data.*
 import com.kuit.couphone.databinding.ActivityLoginBinding
 import com.kuit.couphone.ui.home.HomeFragment
 import retrofit2.Call
@@ -62,7 +59,28 @@ class LoginActivity : AppCompatActivity() {
         else if (token != null) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
-            Log.d("test","1234")
+            var userinfo : User
+            UserApiClient.instance.me { user, error ->
+                if (error != null) {
+                    Log.e(TAG, "사용자 정보 요청 실패", error)
+                } else if (user != null) {
+                    Log.d(
+                        TAG,
+                        "사용자 정보 요청 성공" +
+                                "\n회원번호: ${user.id}" +
+                                "\n이메일: ${user.kakaoAccount?.email}" +
+                                "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}"
+                    )
+                    userinfo = user.kakaoAccount?.email?.let { user!!.kakaoAccount?.profile?.nickname?.let { it1 ->
+                        User(it,
+                            it1,"admin")
+                    } }!!
+                    post_user_info(userinfo)
+                }
+
+            }
+
             finish()
         }
     }
@@ -91,9 +109,32 @@ class LoginActivity : AppCompatActivity() {
                 if (error == null) {
                     Log.d(TAG, "accessTokenInfo 유효성 체크 성공, 회원번호 >> ${accessToken?.id}")
                     getKakaoUser()
+//                    var user : User = User()
+//                    post_user_info(user)
                     val intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
-                    Log.d("test","1234")
+                    var userinfo : User
+                    UserApiClient.instance.me { user, error ->
+                        if (error != null) {
+                            Log.e(TAG, "사용자 정보 요청 실패", error)
+                        } else if (user != null) {
+                            Log.d(
+                                TAG,
+                                "사용자 정보 요청 성공" +
+                                        "\n회원번호: ${user.id}" +
+                                        "\n이메일: ${user.kakaoAccount?.email}" +
+                                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}"
+                            )
+                            userinfo = user.kakaoAccount?.email?.let { user!!.kakaoAccount?.profile?.nickname?.let { it1 ->
+                                User(it,
+                                    it1,"admin")
+                            } }!!
+                            post_user_info(userinfo)
+                        }
+
+                    }
+
                     finish()
                 } else {
                     Log.d(TAG, "accessTokenInfo 유효성 체크 실패")
@@ -132,28 +173,33 @@ class LoginActivity : AppCompatActivity() {
                             "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
                             "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}"
                 )
+                val userinfo =  user.kakaoAccount?.email?.let { user.kakaoAccount?.profile?.nickname?.let { it1 ->
+                    User(it, it1,"admin")
+                } }
             }
+
         }
     }
     private fun post_user_info(user : User){
         val service =  getRetrofit().create(ApiInterface::class.java)
         service.postUserInfo(user)
-            .enqueue( object : retrofit2.Callback<UserInfoResponse>{
+            .enqueue( object : retrofit2.Callback<UserResponse>{
                 override fun onResponse(
-                    call: Call<UserInfoResponse>,
-                    response: Response<UserInfoResponse>
+                    call: Call<UserResponse>,
+                    response: Response<UserResponse>
                 ) {
                     if(response.isSuccessful) {
                         val resp = response.body()
-                        Log.d("GetUserid", resp.toString())
+                        user_token = resp!!.result.accessToken
+                        Log.d("Postuserinfo", resp.toString())
                     }
                     else{
-                        Log.d("GetUserid", response.toString())
+                        Log.d("Postuserinfo", response.toString())
                     }
                 }
 
-                override fun onFailure(call: Call<UserInfoResponse>, t: Throwable) {
-                    Log.d("GetUserid",t.message.toString())
+                override fun onFailure(call: Call<UserResponse>, t: Throwable) {
+                    Log.d("Postuserinfo",t.message.toString())
                 }
 
             })

@@ -10,7 +10,7 @@ interface ApiInterface {
     @POST("/auth/login")
     fun postUserInfo(
         @Body user :User
-    ): Call<UserResponse?>?
+    ): Call<UserResponse>
 
     @GET("/users")
     fun getUserInfo(
