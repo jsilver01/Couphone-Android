@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <application
+        android:name=".KakaoApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -10,7 +14,24 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Couphone1"
+        android:usesCleartextTraffic="true"
         tools:targetApi="31">
+        <meta-data android:name="com.kakao.sdk.AppKey" android:value="4d8bc2574df1b7f508727581b2d59c7e" />
+        <activity
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
+                <data
+                    android:host="oauth"
+                    android:scheme="kakao4d8bc2574df1b7f508727581b2d59c7e" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".SplashActivity"
             android:exported="true"
@@ -34,7 +55,7 @@
             android:name=".RegisterActivity"
             android:exported="true"/>
         <activity
-            android:name=".SettingFragment"
+            android:name=".InformationActivity"
             android:exported="true"/>
 
     </application>

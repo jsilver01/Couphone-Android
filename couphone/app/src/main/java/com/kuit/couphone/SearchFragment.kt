@@ -11,10 +11,12 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.kuit.couphone.SearchAdapter
+import com.kuit.couphone.R
+import com.kuit.couphone.SearchResultFragment
 import com.kuit.couphone.data.LocalSearchDB
 import com.kuit.couphone.data.LocalSearchEntity
 import com.kuit.couphone.databinding.FragmentSearchBinding
-import com.kuit.couphone.ui.home.HomeFragment
 import java.util.Locale
 
 class SearchFragment : Fragment() {

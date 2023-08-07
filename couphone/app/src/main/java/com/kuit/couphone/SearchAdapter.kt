@@ -1,11 +1,9 @@
 package com.kuit.couphone
 
-
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.kuit.couphone.R
 import com.kuit.couphone.data.LocalSearchEntity
 import com.kuit.couphone.databinding.ItemSearchBinding
 
@@ -67,15 +65,4 @@ class SearchAdapter(private val searchItemList: ArrayList<LocalSearchEntity>) : 
             storeName.text = keyword.keyword
         }
     }
-
-//    inner class ViewHolder(val binding: ItemSearchBinding) : RecyclerView.ViewHolder(binding.root) {
-//
-//        val storeName: TextView = binding.storenameTv
-//
-//        fun bind(keyword: LocalSearchEntity) {
-//            binding.root.setOnClickListener {
-//                itemClickListener.onItemClick(keyword)
-//            }
-//        }
-//    }
 }

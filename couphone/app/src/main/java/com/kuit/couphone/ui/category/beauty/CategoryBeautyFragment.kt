@@ -1,59 +1,60 @@
 package com.kuit.couphone.ui.category.beauty
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
-import com.kuit.couphone.databinding.FragmentCategoryBinding
+import com.kuit.couphone.BaseItemAdapter
+import com.kuit.couphone.InformationActivity
+import com.kuit.couphone.MyCouponFragment
 import com.kuit.couphone.R
+import com.kuit.couphone.data.StoreInfo
+import com.kuit.couphone.databinding.FragmentCategoryBinding
+import com.kuit.couphone.ui.home.HomeFragment
 
 class CategoryBeautyFragment : Fragment() {
 
     lateinit var binding: FragmentCategoryBinding
-    private val categoyList = listOf<String>("미용실", "화장품", "피어싱+렌즈")
-
+    var adapter : BaseItemAdapter?= null
+    var storeList = ArrayList<StoreInfo>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
+        binding.backIv.setOnClickListener {
+            parentFragmentManager.beginTransaction().apply{replace(R.id.main_frm, HomeFragment()).addToBackStack(null).commit()}
+        }
+        initDummyData()
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val adapter = CategoryBeautyVPAdapter(this)
-        binding.searchListVp.adapter = adapter
+        adapter = BaseItemAdapter(storeList)
+        binding.categoryListRv.adapter = adapter
+        binding.categoryListRv.layoutManager = LinearLayoutManager(context)
         binding.categoryTv.text = "'뷰티'"
-        TabLayoutMediator(binding.searchTb,binding.searchListVp){
-                tab,pos ->
-            tab.text = categoyList[pos]
-        }.attach()
-        setTabItemMargin(binding.searchTb,30)
-        binding.backIv.setOnClickListener {
-            val homeFragment = com.kuit.couphone.ui.home.HomeFragment()
-            parentFragmentManager.beginTransaction()
-                .replace(R.id.main_frm, homeFragment)
-                .addToBackStack(null)
-                .commitAllowingStateLoss()
-        }
-    }
-
-    private fun setTabItemMargin(tabLayout: TabLayout, marginEnd: Int = 20) {
-        for (i in 0 until 3) {
-            val tabs = tabLayout.getChildAt(0) as ViewGroup
-            for (i in 0 until tabs.childCount) {
-                val tab = tabs.getChildAt(i)
-                val lp = tab.layoutParams as LinearLayout.LayoutParams
-                lp.marginEnd = marginEnd
-                tab.layoutParams = lp
-                tabLayout.requestLayout()
+        adapter!!.setOnItemClickListener(object : BaseItemAdapter.OnItemClickListener{
+            override fun onItemClick(itemList: StoreInfo) {
+                val intent = Intent(requireContext(), InformationActivity::class.java)
+                startActivity(intent)
             }
-        }
+
+        })
+    }
+    private fun initDummyData() {
+        storeList.add(StoreInfo("test1", "test1111111"))
+        storeList.add(StoreInfo("test2", "test22222222222"))
+        storeList.add(StoreInfo("test3", "test333333333333333333"))
+        storeList.add(StoreInfo("test4", "test4444444444444444444"))
     }
 }

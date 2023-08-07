@@ -22,7 +22,7 @@ class SplashActivity : AppCompatActivity() {
     fun loadSlash() {
         var handler = Handler(Looper.getMainLooper())
         handler.postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, LoginActivity::class.java)
             startActivity(intent)
             finish()
         }, 2000)
