@@ -26,14 +26,14 @@
             android:id="@+id/setting_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/tway_fly"
+            android:fontFamily="@font/line_seed_sans_bold"
             android:text="환경 설정"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="20sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="18dp"/>
+            android:layout_marginTop="20dp"/>
 
         <View
             android:id="@+id/line"
@@ -108,15 +108,18 @@
 
         <TextView
             android:id="@+id/couphone_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="@font/line_seed_sans_bold"
             android:text="내 쿠폰 관리"
             android:textColor="@color/deep_gray"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@id/account_manage_tv"
-            app:layout_constraintTop_toBottomOf="@id/account_manage_tv" />
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            app:layout_constraintTop_toBottomOf="@id/account_manage_tv"
+            android:padding="10dp"/>
 
         <ImageButton
             android:id="@+id/right_arrow_iv"
@@ -126,13 +129,13 @@
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="40dp"
-            app:layout_constraintTop_toTopOf="@id/couphone_tv" />
+            app:layout_constraintBottom_toBottomOf="@id/couphone_tv"
+            android:layout_marginBottom="3dp"/>
 
         <ImageView
             android:id="@+id/line1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:layout_marginStart="40dp"
             android:layout_marginEnd="40dp"
             android:src="@drawable/line"
@@ -142,13 +145,16 @@
 
         <TextView
             android:id="@+id/change_info_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/line_seed_sans_bold"
             android:text="회원정보 변경"
             android:textColor="@color/deep_gray"
             android:textSize="15sp"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:padding="10dp"
             app:layout_constraintStart_toStartOf="@id/account_manage_tv"
             app:layout_constraintTop_toBottomOf="@id/line1" />
 
@@ -160,44 +166,51 @@
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="40dp"
-            app:layout_constraintTop_toTopOf="@id/change_info_tv" />
+            app:layout_constraintBottom_toBottomOf="@id/change_info_tv"
+            android:layout_marginBottom="3dp"/>
+
 
         <ImageView
             android:id="@+id/line2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:src="@drawable/line"
-            app:layout_constraintStart_toStartOf="@id/change_info_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/change_info_tv" />
 
         <TextView
             android:id="@+id/logout_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/line_seed_sans_bold"
             android:text="로그아웃"
             android:textColor="@color/deep_gray"
+            android:padding="10dp"
             android:textSize="15sp"
-            app:layout_constraintStart_toStartOf="@id/account_manage_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
             app:layout_constraintTop_toBottomOf="@id/line2"/>
 
         <ImageButton
-            android:id="@+id/rightArrowIv2"
+            android:id="@+id/right_arrow_iv2"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@color/white"
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="40dp"
-            app:layout_constraintTop_toTopOf="@id/logout_tv" />
+            app:layout_constraintBottom_toBottomOf="@id/logout_tv"
+            android:layout_marginBottom="3dp"/>
 
         <ImageView
             android:id="@+id/line3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
             android:src="@drawable/line"
             app:layout_constraintStart_toStartOf="@id/logout_tv"
             app:layout_constraintTop_toBottomOf="@id/logout_tv" />
@@ -217,9 +230,12 @@
 
         <TextView
             android:id="@+id/inquiry_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:padding="10dp"
             android:fontFamily="@font/line_seed_sans_bold"
             android:text="1:1 문의하기"
             android:textColor="@color/deep_gray"
@@ -235,22 +251,29 @@
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="40dp"
-            app:layout_constraintTop_toTopOf="@id/inquiry_tv" />
+            app:layout_constraintBottom_toBottomOf="@id/inquiry_tv"
+            android:layout_marginBottom="3dp"/>
 
         <ImageView
             android:id="@+id/line4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:src="@drawable/line"
-            app:layout_constraintStart_toStartOf="@id/inquiry_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/inquiry_tv" />
+
 
         <TextView
             android:id="@+id/use_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:padding="10dp"
             android:fontFamily="@font/line_seed_sans_bold"
             android:text="이용약관"
             android:textColor="@color/deep_gray"
@@ -266,21 +289,28 @@
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="40dp"
-            app:layout_constraintTop_toTopOf="@id/use_tv" />
+            app:layout_constraintBottom_toBottomOf="@id/use_tv"
+            android:layout_marginBottom="3dp"/>
 
         <ImageView
             android:id="@+id/line5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:src="@drawable/line"
-            app:layout_constraintStart_toStartOf="@id/use_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/use_tv" />
+
 
         <TextView
             android:id="@+id/version_tv"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="38dp"
+            android:layout_marginEnd="38dp"
+            android:padding="10dp"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/line_seed_sans_bold"
             android:text="버전 정보"
@@ -297,15 +327,18 @@
             android:src="@drawable/right_arrow"
             app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginEnd="40dp"
-            app:layout_constraintTop_toTopOf="@id/version_tv" />
+            app:layout_constraintBottom_toBottomOf="@id/version_tv"
+            android:layout_marginBottom="3dp"/>
 
         <ImageView
             android:id="@+id/line6"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
             android:src="@drawable/line"
-            app:layout_constraintStart_toStartOf="@id/version_tv"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/version_tv" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/white"
-    android:id="@+id/constarint">
+    android:id="@+id/constraint">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/searchment_cl"
@@ -29,16 +29,6 @@
             android:layout_marginTop="30dp"
             android:layout_marginStart="25dp"/>
 
-        <ImageButton
-            android:id="@+id/imageButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/bellbadge"
-            android:background="@color/white"
-            app:layout_constraintTop_toTopOf="@id/logo_tv"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginRight="15dp"
-            android:contentDescription="알림"/>
 
         <TextView
             android:id="@+id/search_tv"
@@ -123,8 +113,6 @@
                 android:fontFamily="@font/lineseedkr_bd"
                 android:hint="지갑 속에서 헤매지말고 쿠폰에서 검색!"
                 android:paddingTop="12dp" />
-
-
         </FrameLayout>
 
     </FrameLayout>
