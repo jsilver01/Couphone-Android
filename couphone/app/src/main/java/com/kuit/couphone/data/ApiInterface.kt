@@ -17,5 +17,20 @@ interface ApiInterface {
         @Header("accept") token: String
     ):Call<UserInfoResponse>
 
+    @GET("/coupons")
+    fun getCoupons(
+        @Header("Authorization") token: String
+    ): Call<CouponResponse>
 
+    @GET("/coupons/status/{coupon-id}")
+    fun getCouponUseResponse(
+        @Header("Authorization") token: String,
+        @Path("coupon-id") couponId: Int
+    ): Call<CouponUseResponse>
+
+    @GET("/coupons/stamp/{coupon-id}")
+    fun getCouponGetResponse(
+        @Header("Authorization") token: String,
+        @Path("coupon-id") couponId: Int
+    ): Call<CouponGetResponse>
 }
