@@ -11,13 +11,12 @@ interface ApiInterface {
     @POST("/auth/login")
     fun postUserInfo(
         @Body user :User
-    ): Call<UserResponse?>?
+    ): Call<UserResponse>
 
     @GET("/users")
     fun getUserInfo(
         @Header("Authorization") token: String
     ): Call<UserInfoResponse>
-
     @POST("/brands")
     fun postBrandRegister(
         @Header("Authorization") token: String
@@ -33,4 +32,20 @@ interface ApiInterface {
         @Header("Authorization") token: String,
         @Path("brand-id") id: Int
     ): Call<BrandDetailedResponse>
+    @GET("/coupons")
+    fun getCoupons(
+        @Header("Authorization") token: String
+    ): Call<CouponResponse>
+
+    @GET("/coupons/status/{coupon-id}")
+    fun getCouponUseResponse(
+        @Header("Authorization") token: String,
+        @Path("coupon-id") couponId: Int
+    ): Call<CouponUseResponse>
+
+    @GET("/coupons/stamp/{coupon-id}")
+    fun getCouponGetResponse(
+        @Header("Authorization") token: String,
+        @Path("coupon-id") couponId: Int
+    ): Call<CouponGetResponse>
 }
