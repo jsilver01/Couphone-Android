@@ -1,5 +1,6 @@
 package com.kuit.couphone.data
 
+import android.telecom.Call
 import com.kuit.couphone.data.kakaoInfo.AddressInfo
 import retrofit2.Call
 import retrofit2.http.*
@@ -14,9 +15,23 @@ interface ApiInterface {
 
     @GET("/users")
     fun getUserInfo(
-        @Header("accept") token: String
-    ):Call<UserInfoResponse>
+        @Header("Authorization") token: String
+    ): Call<UserInfoResponse>
+    @POST("/brands")
+    fun postBrandRegister(
+        @Header("Authorization") token: String
+    ): Call<BrandRegisterResponse>
 
+    @GET("/brands")
+    fun getBrand(
+        @Header("Authorization") token: String
+    ): Call<BrandResponse>
+
+    @GET("/brands/{brand-id}")
+    fun getBrandDetailed(
+        @Header("Authorization") token: String,
+        @Path("brand-id") id: Int
+    ): Call<BrandDetailedResponse>
     @GET("/coupons")
     fun getCoupons(
         @Header("Authorization") token: String
