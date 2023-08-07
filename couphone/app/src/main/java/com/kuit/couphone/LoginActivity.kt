@@ -15,8 +15,14 @@ import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.user.UserApiClient
+import com.kuit.couphone.data.ApiInterface
+import com.kuit.couphone.data.User
+import com.kuit.couphone.data.UserInfoResponse
+import com.kuit.couphone.data.getRetrofit
 import com.kuit.couphone.databinding.ActivityLoginBinding
 import com.kuit.couphone.ui.home.HomeFragment
+import retrofit2.Call
+import retrofit2.Response
 
 class LoginActivity : AppCompatActivity() {
 
@@ -73,7 +79,6 @@ class LoginActivity : AppCompatActivity() {
 //            val intent = Intent(this, RegisterActivity::class.java)
 //            startActivity(intent)
 //            finish()
-
             //로그인이면
             loginWithKakao()
         }
@@ -129,5 +134,28 @@ class LoginActivity : AppCompatActivity() {
                 )
             }
         }
+    }
+    private fun post_user_info(user : User){
+        val service =  getRetrofit().create(ApiInterface::class.java)
+        service.postUserInfo(user)
+            .enqueue( object : retrofit2.Callback<UserInfoResponse>{
+                override fun onResponse(
+                    call: Call<UserInfoResponse>,
+                    response: Response<UserInfoResponse>
+                ) {
+                    if(response.isSuccessful) {
+                        val resp = response.body()
+                        Log.d("GetUserid", resp.toString())
+                    }
+                    else{
+                        Log.d("GetUserid", response.toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<UserInfoResponse>, t: Throwable) {
+                    Log.d("GetUserid",t.message.toString())
+                }
+
+            })
     }
 }
