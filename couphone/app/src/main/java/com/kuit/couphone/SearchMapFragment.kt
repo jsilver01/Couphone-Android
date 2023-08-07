@@ -39,6 +39,12 @@ class SearchMapFragment : Fragment() {
         adapter = SearchAdapter(searchItemList)
         binding.recyclerViewList.adapter = adapter
         binding.recyclerViewList.layoutManager = LinearLayoutManager(context)
+        binding.backIv.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, MyLocationFragment())
+                .addToBackStack(null)
+                .commitAllowingStateLoss()
+        }
         Log.d("dbupdateeeeeeeeeee",searchItemList.toString())
         adapter!!.setOnItemClickListener(object : SearchAdapter.OnItemClickListener{
             override fun onItemClick(keyword: LocalSearchEntity) {
@@ -75,6 +81,9 @@ class SearchMapFragment : Fragment() {
             val passBundleBFragment = MyLocationFragment()
             passBundleBFragment.arguments = bundle
             parentFragmentManager.beginTransaction().replace(R.id.main_frm, passBundleBFragment).commit()
+            //검색결과 api 요청 받은 list들 리사이클러뷰로 띄우기, 지도에 마커 찍기
+
+
             Log.d("dbupdateeeeeeeeeee","업데이트완룓ㄷㄷㄷㄷㄷㄷㄷㄷㄷ")
         }
         binding.searchEt.setOnEditorActionListener(getEditorActionListener(binding.submitBtn))
