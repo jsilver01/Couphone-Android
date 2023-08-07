@@ -30,9 +30,6 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.leftArrowIv.setOnClickListener {
-            //백버튼 로직 구현 부분
-        }
 
         binding.logoutTv.setOnClickListener {
             // 로그아웃

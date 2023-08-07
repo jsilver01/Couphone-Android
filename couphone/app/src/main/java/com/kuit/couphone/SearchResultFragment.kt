@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.kuit.couphone.data.StoreInfo
 import com.kuit.couphone.databinding.FragmentSearchResultBinding
+import com.kuit.couphone.ui.home.HomeFragment
 
 class SearchResultFragment : Fragment() {
     lateinit var binding : FragmentSearchResultBinding
@@ -30,6 +31,17 @@ class SearchResultFragment : Fragment() {
         binding.categoryTv.text = result
         return binding.root
 
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.backIv.setOnClickListener {
+            val homeFragment = com.kuit.couphone.ui.home.HomeFragment()
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, homeFragment)
+                .addToBackStack(null)
+                .commitAllowingStateLoss()
+        }
     }
     private fun initDummyData() {
         storeList.add(StoreInfo("test1", "test1111111"))
