@@ -5,8 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.example.stickode4.SearchFragment
 import com.kuit.couphone.R
+import com.kuit.couphone.SearchFragment
 import com.kuit.couphone.data.LocalSearchDB
 import com.kuit.couphone.data.LocalSearchEntity
 import com.kuit.couphone.databinding.FragmentHomeBinding
