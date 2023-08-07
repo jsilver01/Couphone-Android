@@ -1,5 +1,6 @@
 package com.kuit.couphone
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -42,6 +43,12 @@ class SearchResultFragment : Fragment() {
                 .addToBackStack(null)
                 .commitAllowingStateLoss()
         }
+        adapter!!.setOnItemClickListener(object : BaseItemAdapter.OnItemClickListener{
+            override fun onItemClick(itemList: StoreInfo) {
+                val intent = Intent(requireContext(), InformationActivity::class.java)
+                startActivity(intent)
+            }
+        })
     }
     private fun initDummyData() {
         storeList.add(StoreInfo("test1", "test1111111"))

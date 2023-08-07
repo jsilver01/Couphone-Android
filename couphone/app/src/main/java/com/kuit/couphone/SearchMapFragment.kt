@@ -39,6 +39,12 @@ class SearchMapFragment : Fragment() {
         adapter = SearchAdapter(searchItemList)
         binding.recyclerViewList.adapter = adapter
         binding.recyclerViewList.layoutManager = LinearLayoutManager(context)
+        binding.backIv.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, MyLocationFragment())
+                .addToBackStack(null)
+                .commitAllowingStateLoss()
+        }
         Log.d("dbupdateeeeeeeeeee",searchItemList.toString())
         adapter!!.setOnItemClickListener(object : SearchAdapter.OnItemClickListener{
             override fun onItemClick(keyword: LocalSearchEntity) {
