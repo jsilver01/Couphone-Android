@@ -1,6 +1,7 @@
 package com.kuit.couphone
 
 import KakaoAPI
+import StoreAdapter
 import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Context.*
@@ -20,8 +21,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.kuit.couphone.data.StoreInfo
 import com.kuit.couphone.data.kakaoInfo.AddressInfo
 import com.kuit.couphone.databinding.FragmentMyLocationBinding
 import net.daum.mf.map.api.MapPOIItem
@@ -46,6 +49,8 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
     private val ACCESS_FINE_LOCATION = 1000
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     lateinit var mContext: Context
+    var adapter : StoreAdapter?= null
+    var storeList = ArrayList<StoreInfo>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -57,6 +62,17 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
         } else {
             Toast.makeText(requireContext(), "GPS를 켜주세요", Toast.LENGTH_SHORT).show()
         }
+        initDummyData()
+        adapter = StoreAdapter(storeList)
+        binding.storeListRv.adapter = adapter
+        binding.storeListRv.layoutManager = LinearLayoutManager(context)
+        adapter!!.setOnItemClickListener(object : StoreAdapter.OnItemClickListener{
+            override fun onItemClick(itemList: StoreInfo) {
+                val intent = Intent(requireContext(), InformationActivity::class.java)
+                startActivity(intent)
+            }
+
+        })
         binding.zoomin.setOnClickListener {
             binding.mapView.zoomIn(true)
         }
@@ -338,5 +354,11 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
                 Log.w("MainActivity", "통신 실패: ${t.message}")
             }
         })
+    }
+    private fun initDummyData() {
+        storeList.add(StoreInfo("test1", "test1111111"))
+        storeList.add(StoreInfo("test2", "test22222222222"))
+        storeList.add(StoreInfo("test3", "test333333333333333333"))
+        storeList.add(StoreInfo("test4", "test4444444444444444444"))
     }
 }

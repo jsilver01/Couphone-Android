@@ -28,6 +28,7 @@
             android:id="@+id/map_search_ll"
             app:layout_constraintTop_toTopOf="parent">
 
+
             <FrameLayout
                 android:id="@+id/search_fl"
                 android:layout_width="344dp"
@@ -183,11 +184,59 @@
                 app:layout_constraintStart_toEndOf="@id/cafe_check_iv"
                 app:layout_constraintTop_toTopOf="@id/cafe_check_iv" />
             <View
+                android:id="@+id/my_location_view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="100dp"
                 android:background="@color/black"/>
+            <ImageView
+                android:id="@+id/background_first_iv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/category"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/my_location_view"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"/>
+            <TextView
+                android:id="@+id/arround_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:fontFamily="@font/lineseedkr_bd"
+                android:text="주변 매장"
+                android:textColor="@color/black"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@id/background_first_iv"
+                app:layout_constraintStart_toEndOf="@id/background_first_iv"
+                app:layout_constraintTop_toTopOf="@id/background_first_iv" />
+            <ScrollView
+                android:id="@+id/search_record_sv"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="20dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/background_first_iv">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/store_list_rv"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginHorizontal="5dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        tools:listitem="@layout/item_store"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </ScrollView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

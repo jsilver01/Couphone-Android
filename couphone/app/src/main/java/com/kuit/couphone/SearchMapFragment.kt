@@ -81,6 +81,9 @@ class SearchMapFragment : Fragment() {
             val passBundleBFragment = MyLocationFragment()
             passBundleBFragment.arguments = bundle
             parentFragmentManager.beginTransaction().replace(R.id.main_frm, passBundleBFragment).commit()
+            //검색결과 api 요청 받은 list들 리사이클러뷰로 띄우기, 지도에 마커 찍기
+
+
             Log.d("dbupdateeeeeeeeeee","업데이트완룓ㄷㄷㄷㄷㄷㄷㄷㄷㄷ")
         }
         binding.searchEt.setOnEditorActionListener(getEditorActionListener(binding.submitBtn))
