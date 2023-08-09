@@ -13,15 +13,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
-            android:id="@+id/left_arrow_iv"
-            android:layout_width="56dp"
-            android:layout_height="56dp"
-            android:background="@color/white"
-            android:src="@drawable/left_arrow_double"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
         <TextView
             android:id="@+id/setting_tv"
             android:layout_width="wrap_content"

@@ -8,22 +8,19 @@
 
     <ImageView
         android:id="@+id/logo_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="178dp"
+        android:layout_height="178dp"
         android:src="@drawable/logo_green"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="280dp"/>
+        android:layout_marginTop="160dp"/>
 
-    <TextView
-        android:id="@+id/couphone_tv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="couphone"
-        android:textColor="@color/white"
-        android:fontFamily="@font/tway_fly"
-        android:textSize="50sp"
+    <ImageView
+        android:id="@+id/couphone_iv"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:src="@drawable/logo_text_white"
         app:layout_constraintTop_toBottomOf="@id/logo_iv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -35,11 +32,11 @@
         android:text="쿠폰을 폰 안에"
         android:fontFamily="@font/tway_fly"
         android:textColor="@color/white"
-        android:textSize="13sp"
-        app:layout_constraintTop_toBottomOf="@id/couphone_tv"
+        android:textSize="15sp"
+        app:layout_constraintTop_toBottomOf="@id/couphone_iv"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:layout_marginTop="5dp"/>
+        android:layout_marginTop="15dp"/>
 
 
 

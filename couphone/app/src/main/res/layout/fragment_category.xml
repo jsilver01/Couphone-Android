@@ -78,7 +78,7 @@
             android:layout_height="30dp"
             android:background="@drawable/filter_btn_background"
             android:fontFamily="@font/line_seed_sans_bold"
-            android:text="인기 조회순"
+            android:text="만료 기간순"
             android:textColor="@color/green"
             android:textSize="12sp"
             app:tabIndicatorHeight="0dp" />

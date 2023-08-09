@@ -17,7 +17,7 @@
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         app:fabCradleRoundedCornerRadius="-10dp"
-        android:layout_height="wrap_content"
+        android:layout_height="68dp"
         android:backgroundTint="@color/green"
         android:layout_gravity="bottom">
 
@@ -27,6 +27,7 @@
             android:layout_height="match_parent"
             android:background="@color/green"
             android:layout_marginEnd="16dp"
+            android:layout_marginBottom="3dp"
             app:elevation="0dp"
             app:labelVisibilityMode="labeled"
             app:itemIconTint="@color/bottom_nav_menu_select"
