@@ -7,6 +7,7 @@ import android.content.Context
 import android.content.Context.*
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Geocoder
 import android.location.Location
 import android.location.LocationManager
 import android.net.Uri
@@ -24,11 +25,12 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.kuit.couphone.data.StoreInfo
+import com.kuit.couphone.data.*
 import com.kuit.couphone.data.kakaoInfo.AddressInfo
 import com.kuit.couphone.databinding.FragmentMyLocationBinding
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
+import net.daum.mf.map.api.MapPoint.GeoCoordinate
 import net.daum.mf.map.api.MapReverseGeoCoder
 import net.daum.mf.map.api.MapView
 import retrofit2.Call
@@ -50,7 +52,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     lateinit var mContext: Context
     var adapter : StoreAdapter?= null
-    var storeList = ArrayList<StoreInfo>()
+    var storeList = ArrayList<StoreResult>()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -62,16 +64,16 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
         } else {
             Toast.makeText(requireContext(), "GPS를 켜주세요", Toast.LENGTH_SHORT).show()
         }
-        initDummyData()
+
+
         adapter = StoreAdapter(storeList)
         binding.storeListRv.adapter = adapter
         binding.storeListRv.layoutManager = LinearLayoutManager(context)
         adapter!!.setOnItemClickListener(object : StoreAdapter.OnItemClickListener{
-            override fun onItemClick(itemList: StoreInfo) {
+            override fun onItemClick(itemList: StoreResult) {
                 val intent = Intent(requireContext(), InformationActivity::class.java)
                 startActivity(intent)
             }
-
         })
         binding.zoomin.setOnClickListener {
             binding.mapView.zoomIn(true)
@@ -106,7 +108,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
         //위도 , 경도
         fusedLocationClient.lastLocation.addOnSuccessListener { location: Location? ->
             // Got last known location. In some rare situations this can be null.
-            //var geocoder = Geocoder(requireContext(), Locale.KOREA)
+            var geocoder = Geocoder(requireContext(), Locale.KOREA)
             if (location != null) {
                 val uNowPosition = MapPoint.mapPointWithGeoCoord(location.latitude, location.longitude)
                 binding.mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(location.latitude,location.longitude),true)
@@ -145,6 +147,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
             //var geocoder = Geocoder(requireContext(), Locale.KOREA)
             if (location != null) {
                 val uNowPosition = MapPoint.mapPointWithGeoCoord(location.latitude, location.longitude)
+                initNearbyInfo(location.latitude,location.longitude)
                 binding.mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(location.latitude,location.longitude),true)
                 val reverseGeoCoder = MapReverseGeoCoder(
                     "4d8bc2574df1b7f508727581b2d59c7e",
@@ -270,6 +273,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
         marker.tag = 0
         marker.mapPoint = MapPoint.mapPointWithGeoCoord(p1?.mapPointGeoCoord!!.latitude, p1?.mapPointGeoCoord!!.longitude)
         Log.d("testlatitue",p1?.mapPointGeoCoord!!.latitude.toString())
+        Log.d("testlatitue",p1?.mapPointGeoCoord!!.longitude.toString())
         marker.markerType = MapPOIItem.MarkerType.BluePin        // 마커 모양 (커스텀)
         marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin  // 클릭 시 마커 모양 (커스텀)
         // 지도에 마커 추가
@@ -277,6 +281,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
         isMarkerAdded = true // 마커 추가 상태로 변경
         //선택한 위치로 지도 중심 변경
         binding.mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(p1?.mapPointGeoCoord!!.latitude, p1?.mapPointGeoCoord!!.longitude),true)
+        initNearbyInfo(p1?.mapPointGeoCoord!!.longitude,p1?.mapPointGeoCoord!!.latitude)
         val reverseGeoCoder = MapReverseGeoCoder(
             "4d8bc2574df1b7f508727581b2d59c7e",
             MapPoint.mapPointWithGeoCoord(p1?.mapPointGeoCoord!!.latitude, p1?.mapPointGeoCoord!!.longitude),
@@ -329,8 +334,10 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
                 response: Response<AddressInfo>
             ) {
                 // 통신 성공 (검색 결과는 response.body()에 담겨있음)
-                Log.d("Test", "Raw: ${response.raw()}")
-                Log.d("Test", "Body: ${response.body()}")
+                Log.d("Test111", "Raw: ${response.raw()}")
+                Log.d("Test111", "Body: ${response.body()}")
+                Log.d("Test111", response.body()!!.documents[0].address.x)
+                Log.d("Test111", response.body()!!.documents[0].address.y)
                 if(response.body()==null){
                     binding.cafeNameTv.text = keyword
                 }
@@ -355,10 +362,78 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
             }
         })
     }
-    private fun initDummyData() {
-        storeList.add(StoreInfo("test1", "test1111111"))
-        storeList.add(StoreInfo("test2", "test22222222222"))
-        storeList.add(StoreInfo("test3", "test333333333333333333"))
-        storeList.add(StoreInfo("test4", "test4444444444444444444"))
+    private fun initNearbyInfo(longitude :Double,latitude : Double) {
+        val service =  getRetrofit().create(ApiInterface::class.java)
+        Log.d("token", "Bearer $user_token")
+        service.getStoresNearby("Bearer $user_token",longitude,latitude,true)
+            .enqueue( object : retrofit2.Callback<StoreResponse>{
+                override fun onResponse(
+                    call: Call<StoreResponse>,
+                    response: Response<StoreResponse>
+                ) {
+                    if(response.isSuccessful) {
+                        val resp = response.body()
+                        storeList.clear()
+                        storeList = resp!!.result as ArrayList<StoreResult>
+                        adapter = StoreAdapter(storeList)
+                        binding.storeListRv.adapter = adapter
+                        binding.storeListRv.layoutManager = LinearLayoutManager(context)
+                        adapter!!.setOnItemClickListener(object : StoreAdapter.OnItemClickListener{
+                            override fun onItemClick(itemList: StoreResult) {
+                                val intent = Intent(requireContext(), InformationActivity::class.java)
+                                startActivity(intent)
+                            }
+                        })
+                        adapter!!.notifyDataSetChanged()
+                        for(i: Int in 0 until storeList.size){
+                            val marker = MapPOIItem()
+                            marker.itemName = "마커 이름"
+                            marker.tag = 0
+                            marker.mapPoint = MapPoint.mapPointWithGeoCoord(449492.810069438, 207005.189144674)
+
+                            marker.markerType = MapPOIItem.MarkerType.BluePin        // 마커 모양 (커스텀)
+                            marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin  // 클릭 시 마커 모양 (커스텀)
+                            // 지도에 마커 추가
+                            binding.mapView.addPOIItem(marker)
+                        }
+                        Log.d("StoreResponse", resp.toString())
+                    }
+                    else{
+                        Log.d("StoreResponse", response.toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<StoreResponse>, t: Throwable) {
+                    Log.d("StoreResponse",t.message.toString())
+                }
+
+            })
     }
+//    private fun transGPS(x:Double,y:Double){
+//        val retrofit = Retrofit.Builder()   // Retrofit 구성
+//            .baseUrl(BASE_URL)
+//            .addConverterFactory(GsonConverterFactory.create())
+//            .build()
+//        val api = retrofit.create(KakaoAPI::class.java)   // 통신 인터페이스를 객체로 생성
+//        val call = api.getWTMGPS(API_KEY,x,y,"WGS84","WTM")   // 검색 조건 입력
+//
+//        // API 서버에 요청
+//        call.enqueue(object: Callback<GPSInfo> {
+//            override fun onResponse(
+//                call: Call<GPSInfo>,
+//                response: Response<GPSInfo>
+//            ) {
+//                // 통신 성공 (검색 결과는 response.body()에 담겨있음)
+//                Log.d("Test123", response.body()!!.documents[0].x.toString())
+//                Log.d("Test123", response.body()!!.documents[0].y.toString())
+//                //initNearbyInfo(response.body()!!.documents[0].x,response.body()!!.documents[0].y)
+//                initNearbyInfo(127.06953,37.54067)
+//            }
+//
+//            override fun onFailure(call: Call<GPSInfo>, t: Throwable) {
+//                // 통신 실패
+//                Log.w("MainActivity", "통신 실패: ${t.message}")
+//            }
+//        })
+//    }
 }

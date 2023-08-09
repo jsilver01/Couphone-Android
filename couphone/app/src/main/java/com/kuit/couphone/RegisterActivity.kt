@@ -17,8 +17,10 @@ import com.google.firebase.auth.PhoneAuthOptions
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import com.kuit.couphone.data.User
+import com.kuit.couphone.data.*
 import com.kuit.couphone.databinding.ActivityRegisterBinding
+import retrofit2.Call
+import retrofit2.Response
 import java.util.concurrent.TimeUnit
 
 class RegisterActivity : AppCompatActivity() {
@@ -86,7 +88,13 @@ class RegisterActivity : AppCompatActivity() {
         if (isValidPassword(userpw)) {
             val user = User(username, phonenum, userpw)
             //user 정보 서버로 보내기
-            Log.d("test12345","success")
+
+            val firstNumber : String = phonenum.substring(0,3)
+            var middleNumber = phonenum.substring(3,7)
+            var lastNumber = phonenum.substring(7,11)
+            val newuserpw = "$firstNumber-$middleNumber-$lastNumber"
+            patchUserInfo(newuserpw,userpw)
+            Log.d("test12345","new")
 
         } else {
             Toast.makeText(this, "비밀번호는 대문자, 소문자, 숫자, 특수문자를 포함하여 최소 8자 이상이어야 합니다.",Toast.LENGTH_LONG).show()
@@ -145,5 +153,29 @@ class RegisterActivity : AppCompatActivity() {
         }
         Log.d("국가코드로 변경된 번호 ",phoneEdit)
         return phoneEdit
+    }
+    fun patchUserInfo(phonenum : String, pinnum : String){
+        val service =  getRetrofit().create(ApiInterface::class.java)
+        service.patchUserInfo("Bearer "+user_token,UserForm(phonenum,pinnum))
+            .enqueue( object : retrofit2.Callback<UserFormResult>{
+                override fun onResponse(
+                    call: Call<UserFormResult>,
+                    response: Response<UserFormResult>
+                ) {
+                    if(response.isSuccessful) {
+                        val resp = response.body()
+                        Log.d("patchUserInfo", resp.toString())
+
+                    }
+                    else{
+                        Log.d("patchUserInfo", response.toString())
+                    }
+                }
+
+                override fun onFailure(call: Call<UserFormResult>, t: Throwable) {
+                    Log.d("patchUserInfo",t.message.toString())
+                }
+
+            })
     }
 }

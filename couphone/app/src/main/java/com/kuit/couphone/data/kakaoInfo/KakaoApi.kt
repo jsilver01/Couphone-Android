@@ -1,5 +1,6 @@
 
 import com.kuit.couphone.data.kakaoInfo.AddressInfo
+import com.kuit.couphone.data.kakaoInfo.GPSInfo
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Header
@@ -14,4 +15,13 @@ interface KakaoAPI {
         // @Query("category_group_code") category: String
 
     ): Call<AddressInfo>    // 받아온 정보가 ResultSearchKeyword 클래스의 구조로 담김
+
+    @GET("/v2/local/geo/transcoord.json")
+    fun getWTMGPS(
+        @Header("Authorization") key : String,
+        @Query("x") x: Double,
+        @Query("y") y: Double,
+        @Query("input_coord") input_coord: String,
+        @Query("output_coord") output_coord: String,
+    ) : Call<GPSInfo>
 }

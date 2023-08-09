@@ -47,4 +47,17 @@ interface ApiInterface {
         @Header("Authorization") token: String,
         @Path("coupon-id") couponId: Int
     ): Call<CouponGetResponse>
+
+    @GET("/stores/nearby")
+    fun getStoresNearby(
+        @Header("Authorization") token: String,
+        @Query("longitude") longitude :Number,
+        @Query("latitude") latitude :Number,
+        @Query("is1km") is1km :Boolean,
+    ):Call<StoreResponse>
+    @PATCH("/users/form")
+    fun patchUserInfo(
+        @Header("Authorization") token: String,
+        @Body  userForm:UserForm,
+    ) :Call<UserFormResult>
 }
