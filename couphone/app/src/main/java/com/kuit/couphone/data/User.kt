@@ -19,6 +19,7 @@ data class UserResult(
     @SerializedName("tokenType") var tokenType : String,
     @SerializedName("memberId") var memberId : Int,
     @SerializedName("grade") var grade : String,
+    @SerializedName("memberLabel") var memberLabel : String,
 )
 
 data class UserInfoResponse(
@@ -33,4 +34,11 @@ data class UserInfoResult(
     @SerializedName("email") var email : String,
     @SerializedName("memberGrade") var memberGrade : String,
     @SerializedName("memberStatus") var memberStatus : String,
+)
+data class UserForm(
+    @SerializedName("phoneNumber") var phoneNumber : String,
+    @SerializedName("pinNumber") var pinNumber : String,
+)
+data class UserFormResult(
+    @SerializedName("id") var id : Int,
 )

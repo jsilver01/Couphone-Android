@@ -57,8 +57,6 @@ class LoginActivity : AppCompatActivity() {
             }
         }
         else if (token != null) {
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
             var userinfo : User
             UserApiClient.instance.me { user, error ->
                 if (error != null) {
@@ -89,7 +87,6 @@ class LoginActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         binding.buttonLogin.setOnClickListener {
             //회원가입이면 --> 서버로부터 회원가입인지 로그인인지 판별
 
@@ -109,10 +106,6 @@ class LoginActivity : AppCompatActivity() {
                 if (error == null) {
                     Log.d(TAG, "accessTokenInfo 유효성 체크 성공, 회원번호 >> ${accessToken?.id}")
                     getKakaoUser()
-//                    var user : User = User()
-//                    post_user_info(user)
-                    val intent = Intent(this, MainActivity::class.java)
-                    startActivity(intent)
                     var userinfo : User
                     UserApiClient.instance.me { user, error ->
                         if (error != null) {
@@ -134,8 +127,9 @@ class LoginActivity : AppCompatActivity() {
                         }
 
                     }
+//                    var user : User = User()
+//                    post_user_info(user)
 
-                    finish()
                 } else {
                     Log.d(TAG, "accessTokenInfo 유효성 체크 실패")
 
@@ -192,6 +186,17 @@ class LoginActivity : AppCompatActivity() {
                         val resp = response.body()
                         user_token = resp!!.result.accessToken
                         Log.d("Postuserinfo", resp.toString())
+                        if(resp.result.memberLabel == "new"){
+                            val intent = Intent(this@LoginActivity, RegisterActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+                        else{
+                            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
+
                     }
                     else{
                         Log.d("Postuserinfo", response.toString())

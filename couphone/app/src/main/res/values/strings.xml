@@ -6,4 +6,5 @@
     <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="store_stamp_text">%1$d / %2$d</string>
 </resources>
