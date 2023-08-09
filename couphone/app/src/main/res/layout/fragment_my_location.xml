@@ -20,6 +20,18 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
 
+        <ImageView
+            android:id="@+id/logo_iv"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logo_text_green"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:fontFamily="@font/tway_fly"
+            android:textColor="@color/green"
+            android:textSize="35sp"
+            android:layout_marginStart="25dp"/>
+
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
