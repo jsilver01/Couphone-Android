@@ -8,9 +8,11 @@
 
     <ImageView
         android:id="@+id/background_iv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/couphone_background" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:src="@drawable/couphone_background"/>
 
     <ImageView
         android:id="@+id/category_img_iv"
@@ -21,23 +23,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/couphone_count_background_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:layout_marginStart="10dp"
-        android:background="@drawable/couphone_count_box"
-        android:fontFamily="@font/line_seed_sans"
-        android:paddingHorizontal="8dp"
-        android:paddingVertical="4dp"
-        android:paddingTop="4dp"
-        android:text="@string/store_stamp_text"
-        android:textColor="@color/white"
-        android:textSize="14sp"
-        app:layout_constraintStart_toEndOf="@id/category_img_iv"
-        app:layout_constraintTop_toTopOf="@id/category_img_iv" />
 
     <TextView
         android:id="@+id/couphone_dday_background_iv"

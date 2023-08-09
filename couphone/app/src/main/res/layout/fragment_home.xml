@@ -16,17 +16,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" >
 
-        <TextView
-            android:id="@+id/logo_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="couphone"
+        <ImageView
+            android:id="@+id/logo_iv"
+            android:layout_width="150dp"
+            android:layout_height="80dp"
+            android:src="@drawable/logo_text_green"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             android:fontFamily="@font/tway_fly"
             android:textColor="@color/green"
             android:textSize="35sp"
-            android:layout_marginTop="30dp"
             android:layout_marginStart="25dp"/>
 
 
@@ -36,11 +35,11 @@
             android:layout_height="wrap_content"
             android:text="여러 쿠폰들을\n한번에 검색해보세요"
             android:textSize="21sp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="20dp"
             android:layout_marginLeft="25dp"
             android:fontFamily="@font/tway_fly"
             android:textColor="@color/black"
-            app:layout_constraintTop_toBottomOf="@id/logo_tv"
+            app:layout_constraintTop_toBottomOf="@id/logo_iv"
             app:layout_constraintStart_toStartOf="parent"
             android:lineSpacingExtra="8dp"/>
 
@@ -158,20 +157,6 @@
             android:layout_marginTop="2dp"
             android:layout_marginLeft="4dp"/>
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="을 찾고 계신가요?"
-            android:textSize="21sp"
-            android:layout_marginLeft="154dp"
-            android:fontFamily="@font/tway_fly"
-            android:textColor="@color/black"
-            app:layout_constraintStart_toEndOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-        </TextView>
-
 
         <TextView
             android:id="@+id/category_tv2"
@@ -184,7 +169,7 @@
             android:fontFamily="@font/lineseedkr_rg"
             android:textColor="#8C8C8C"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/category_tv1"/>
+            app:layout_constraintTop_toBottomOf="@id/category_tv"/>
 
         <GridLayout
             android:id="@+id/category_gl"
