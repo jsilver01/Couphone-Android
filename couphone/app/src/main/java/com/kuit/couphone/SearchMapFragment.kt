@@ -63,7 +63,6 @@ class SearchMapFragment : Fragment() {
         })
         binding.submitBtn.setOnClickListener {
             //유효성검사
-
             val localDao = LocalSearchDB.getInstance(requireContext())!!.SearchKeywordDAO()
             if(localDao.getresultkeyword(binding.searchEt.text.toString())==null) {
                 localDao.insertSearchKeyword(

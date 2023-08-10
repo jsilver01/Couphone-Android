@@ -54,6 +54,7 @@ interface ApiInterface {
         @Query("longitude") longitude :Number,
         @Query("latitude") latitude :Number,
         @Query("is1km") is1km :Boolean,
+        @Query("query") query : String?
     ):Call<StoreResponse>
     @PATCH("/users/form")
     fun patchUserInfo(

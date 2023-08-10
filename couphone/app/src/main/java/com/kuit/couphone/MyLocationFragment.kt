@@ -27,6 +27,7 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.kuit.couphone.data.*
 import com.kuit.couphone.data.kakaoInfo.AddressInfo
+import com.kuit.couphone.data.kakaoInfo.GPSInfo
 import com.kuit.couphone.databinding.FragmentMyLocationBinding
 import net.daum.mf.map.api.MapPOIItem
 import net.daum.mf.map.api.MapPoint
@@ -65,7 +66,6 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
             Toast.makeText(requireContext(), "GPS를 켜주세요", Toast.LENGTH_SHORT).show()
         }
 
-
         adapter = StoreAdapter(storeList)
         binding.storeListRv.adapter = adapter
         binding.storeListRv.layoutManager = LinearLayoutManager(context)
@@ -94,11 +94,14 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
 
     override fun onStart() {
         super.onStart()
-        startTracking()
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        startTracking(this.arguments?.getString("key"))
+    }
     @SuppressLint("MissingPermission")
-    private fun startTracking() {
+    private fun startTracking(keyword: String?) {
         binding.mapView.currentLocationTrackingMode =
             MapView.CurrentLocationTrackingMode.TrackingModeOnWithoutHeadingWithoutMapMoving  //이 부분
         val lm = requireContext().getSystemService(LOCATION_SERVICE) as LocationManager
@@ -120,7 +123,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
                             mapReverseGeoCoder: MapReverseGeoCoder,
                             s: String
                         ) {
-                            convertAddress(s)
+                            convertAddress(s,keyword)
                         }
 
                         override fun onReverseGeoCoderFailedToFindAddress(mapReverseGeoCoder: MapReverseGeoCoder) {
@@ -128,6 +131,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
                         }
                     },
                     requireActivity()
+
                 )
                 reverseGeoCoder.startFindingAddress()
             }
@@ -147,7 +151,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
             //var geocoder = Geocoder(requireContext(), Locale.KOREA)
             if (location != null) {
                 val uNowPosition = MapPoint.mapPointWithGeoCoord(location.latitude, location.longitude)
-                initNearbyInfo(location.latitude,location.longitude)
+                //initNearbyInfo(location.latitude,location.longitude)
                 binding.mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(location.latitude,location.longitude),true)
                 val reverseGeoCoder = MapReverseGeoCoder(
                     "4d8bc2574df1b7f508727581b2d59c7e",
@@ -157,7 +161,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
                             mapReverseGeoCoder: MapReverseGeoCoder,
                             s: String
                         ) {
-                            convertAddress(s)
+                            convertAddress(s,null)
                         }
 
                         override fun onReverseGeoCoderFailedToFindAddress(mapReverseGeoCoder: MapReverseGeoCoder) {
@@ -281,7 +285,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
         isMarkerAdded = true // 마커 추가 상태로 변경
         //선택한 위치로 지도 중심 변경
         binding.mapView.setMapCenterPoint(MapPoint.mapPointWithGeoCoord(p1?.mapPointGeoCoord!!.latitude, p1?.mapPointGeoCoord!!.longitude),true)
-        initNearbyInfo(p1?.mapPointGeoCoord!!.longitude,p1?.mapPointGeoCoord!!.latitude)
+        //initNearbyInfo(p1?.mapPointGeoCoord!!.longitude,p1?.mapPointGeoCoord!!.latitude)
         val reverseGeoCoder = MapReverseGeoCoder(
             "4d8bc2574df1b7f508727581b2d59c7e",
             MapPoint.mapPointWithGeoCoord(p1?.mapPointGeoCoord!!.latitude, p1?.mapPointGeoCoord!!.longitude),
@@ -290,7 +294,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
                     mapReverseGeoCoder: MapReverseGeoCoder,
                     s: String
                 ) {
-                    convertAddress(s)
+                    convertAddress(s,null)
                 }
 
                 override fun onReverseGeoCoderFailedToFindAddress(mapReverseGeoCoder: MapReverseGeoCoder) {
@@ -319,7 +323,7 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
     override fun onMapViewMoveFinished(p0: MapView?, p1: MapPoint?) {
     }
 
-    private fun convertAddress(keyword: String) {
+    private fun convertAddress(keyword: String,searchkeyword : String?) {
         val retrofit = Retrofit.Builder()   // Retrofit 구성
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
@@ -338,6 +342,11 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
                 Log.d("Test111", "Body: ${response.body()}")
                 Log.d("Test111", response.body()!!.documents[0].address.x)
                 Log.d("Test111", response.body()!!.documents[0].address.y)
+                var is1km : Boolean = false
+                if(searchkeyword != null){
+                    is1km = true
+                }
+                transGPS(response.body()!!.documents[0].address.x.toDouble(),response.body()!!.documents[0].address.y.toDouble(),is1km,searchkeyword)
                 if(response.body()==null){
                     binding.cafeNameTv.text = keyword
                 }
@@ -362,10 +371,10 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
             }
         })
     }
-    private fun initNearbyInfo(longitude :Double,latitude : Double) {
+    private fun initNearbyInfo(longitude :Double,latitude : Double,is1km : Boolean, query: String?) {
         val service =  getRetrofit().create(ApiInterface::class.java)
         Log.d("token", "Bearer $user_token")
-        service.getStoresNearby("Bearer $user_token",longitude,latitude,true)
+        service.getStoresNearby("Bearer $user_token",longitude,latitude,is1km,query)
             .enqueue( object : retrofit2.Callback<StoreResponse>{
                 override fun onResponse(
                     call: Call<StoreResponse>,
@@ -385,16 +394,9 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
                             }
                         })
                         adapter!!.notifyDataSetChanged()
+                        binding.mapView.removeAllPOIItems()
                         for(i: Int in 0 until storeList.size){
-                            val marker = MapPOIItem()
-                            marker.itemName = "마커 이름"
-                            marker.tag = 0
-                            marker.mapPoint = MapPoint.mapPointWithGeoCoord(449492.810069438, 207005.189144674)
-
-                            marker.markerType = MapPOIItem.MarkerType.BluePin        // 마커 모양 (커스텀)
-                            marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin  // 클릭 시 마커 모양 (커스텀)
-                            // 지도에 마커 추가
-                            binding.mapView.addPOIItem(marker)
+                            transGPStoGFS(resp.result[i].longitude.toDouble(), resp.result[i].latitude.toDouble(),storeList[i].name)
                         }
                         Log.d("StoreResponse", resp.toString())
                     }
@@ -409,31 +411,67 @@ class MyLocationFragment : Fragment(),MapView.MapViewEventListener {
 
             })
     }
-//    private fun transGPS(x:Double,y:Double){
-//        val retrofit = Retrofit.Builder()   // Retrofit 구성
-//            .baseUrl(BASE_URL)
-//            .addConverterFactory(GsonConverterFactory.create())
-//            .build()
-//        val api = retrofit.create(KakaoAPI::class.java)   // 통신 인터페이스를 객체로 생성
-//        val call = api.getWTMGPS(API_KEY,x,y,"WGS84","WTM")   // 검색 조건 입력
-//
-//        // API 서버에 요청
-//        call.enqueue(object: Callback<GPSInfo> {
-//            override fun onResponse(
-//                call: Call<GPSInfo>,
-//                response: Response<GPSInfo>
-//            ) {
-//                // 통신 성공 (검색 결과는 response.body()에 담겨있음)
-//                Log.d("Test123", response.body()!!.documents[0].x.toString())
-//                Log.d("Test123", response.body()!!.documents[0].y.toString())
-//                //initNearbyInfo(response.body()!!.documents[0].x,response.body()!!.documents[0].y)
-//                initNearbyInfo(127.06953,37.54067)
-//            }
-//
-//            override fun onFailure(call: Call<GPSInfo>, t: Throwable) {
-//                // 통신 실패
-//                Log.w("MainActivity", "통신 실패: ${t.message}")
-//            }
-//        })
-//    }
+    private fun transGPS(x:Double,y:Double,is1km: Boolean,query: String?){
+        val retrofit = Retrofit.Builder()   // Retrofit 구성
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val api = retrofit.create(KakaoAPI::class.java)   // 통신 인터페이스를 객체로 생성
+        val call = api.getWTMGPS(API_KEY,x,y,"WGS84","WTM")   // 검색 조건 입력
+
+        // API 서버에 요청
+        call.enqueue(object: Callback<GPSInfo> {
+            override fun onResponse(
+                call: Call<GPSInfo>,
+                response: Response<GPSInfo>
+            ) {
+                // 통신 성공 (검색 결과는 response.body()에 담겨있음)
+                Log.d("Test123", response.body()!!.documents[0].x.toString())
+                Log.d("Test123", response.body()!!.documents[0].y.toString())
+                initNearbyInfo(response.body()!!.documents[0].x,response.body()!!.documents[0].y,is1km,query)
+
+            }
+
+            override fun onFailure(call: Call<GPSInfo>, t: Throwable) {
+                // 통신 실패
+                Log.w("MainActivity", "통신 실패: ${t.message}")
+            }
+        })
+    }
+    private fun transGPStoGFS(x:Double,y:Double,store_name : String){
+        val retrofit = Retrofit.Builder()   // Retrofit 구성
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val api = retrofit.create(KakaoAPI::class.java)   // 통신 인터페이스를 객체로 생성
+        val call = api.getWTMGPS(API_KEY,x,y,"WTM","WGS84")   // 검색 조건 입력
+
+        // API 서버에 요청
+        call.enqueue(object: Callback<GPSInfo> {
+            override fun onResponse(
+                call: Call<GPSInfo>,
+                response: Response<GPSInfo>
+            ) {
+                // 통신 성공 (검색 결과는 response.body()에 담겨있음)
+                Log.d("Test123", response.body()!!.documents[0].x.toString())
+                Log.d("Test123", response.body()!!.documents[0].y.toString())
+                val marker = MapPOIItem()
+                marker.itemName = store_name
+                marker.tag = 0
+
+                marker.mapPoint = MapPoint.mapPointWithGeoCoord(response.body()!!.documents[0].y,response.body()!!.documents[0].x)
+
+                marker.markerType = MapPOIItem.MarkerType.RedPin        // 마커 모양 (커스텀)
+                marker.selectedMarkerType = MapPOIItem.MarkerType.RedPin  // 클릭 시 마커 모양 (커스텀)
+                // 지도에 마커 추가
+                binding.mapView.addPOIItem(marker)
+
+            }
+
+            override fun onFailure(call: Call<GPSInfo>, t: Throwable) {
+                // 통신 실패
+                Log.w("MainActivity", "통신 실패: ${t.message}")
+            }
+        })
+    }
 }

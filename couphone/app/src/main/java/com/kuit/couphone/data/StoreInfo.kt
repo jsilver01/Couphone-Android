@@ -18,6 +18,9 @@ data class StoreResult(
     @SerializedName("brand_id") var brand_id : Int,
     @SerializedName("getBrandResponse") var getBrandResponse : GetBrandResponse,
     @SerializedName("distance") var distance : Number,
+    @SerializedName("address") var address : String,
+    @SerializedName("longitude") var longitude : Number,
+    @SerializedName("latitude") var latitude : Number,
 )
 data class GetBrandResponse(
     @SerializedName("id") var id : Int,
