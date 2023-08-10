@@ -39,6 +39,8 @@ class CategoryBeautyFragment : Fragment() {
         binding.backIv.setOnClickListener {
             parentFragmentManager.beginTransaction().apply{replace(R.id.main_frm, HomeFragment()).addToBackStack(null).commit()}
         }
+
+        fetchBrandData(1)
         binding.button1.setOnClickListener {
             fetchBrandData(1) // Default (sorting 1)
         }
@@ -73,7 +75,7 @@ class CategoryBeautyFragment : Fragment() {
     private fun fetchBrandData(sortedBy: Int) {
         val service =  getRetrofit().create(ApiInterface::class.java)
         Log.d("token", "Bearer $user_token")
-        service.getBrand("Bearer $user_token",4,"뷰티",sortedBy)
+        service.getBrand("Bearer $user_token",4,null,sortedBy)
             .enqueue( object : retrofit2.Callback<BrandResponse>{
                 override fun onResponse(
                     call: Call<BrandResponse>,
