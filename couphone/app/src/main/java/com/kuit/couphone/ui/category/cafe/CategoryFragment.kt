@@ -33,7 +33,7 @@ class CategoryFragment : Fragment() {
 
     lateinit var binding: FragmentCategoryBinding
     var adapter : BaseItemAdapter?= null
-    var storeList = ArrayList<StoreInfo>()
+    var storeList = ArrayList<BrandResult>()
 
     //    private val retrofit = Retrofit.Builder()
 //        .baseUrl("http://3.39.157.227:8080")
@@ -101,6 +101,19 @@ class CategoryFragment : Fragment() {
                 ) {
                     if(response.isSuccessful) {
                         val resp = response.body()
+
+                        storeList.clear()
+                        storeList = resp!!.result as ArrayList<BrandResult>
+                        adapter = BaseItemAdapter(storeList)
+                        binding.categoryListRv.adapter = adapter
+                        binding.categoryListRv.layoutManager = LinearLayoutManager(context)
+                        adapter!!.setOnItemClickListener(object : BaseItemAdapter.OnItemClickListener{
+                            override fun onItemClick(itemList: StoreInfo) {
+                                val intent = Intent(requireContext(), InformationActivity::class.java)
+                                startActivity(intent)
+                            }
+                        })
+                        adapter!!.notifyDataSetChanged()
 
                         //adapter?.updateData(resp?.result, sortedBy)
                         Log.d("BrandResponse", resp.toString())
