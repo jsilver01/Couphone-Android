@@ -40,7 +40,7 @@ class StoreAdapter(private val itemList : ArrayList<StoreResult>) : RecyclerView
             binding.itemWebtoonCl.setOnClickListener{
                 itemClickListener.onItemClick(storeInfo)
             }
-            if(storeInfo.getBrandResponse.createdDate != null) {
+            if(storeInfo.getBrandResponse.stampCount !=0 ) {
                 binding.couphoneCountBackgroundIv.text =
                     storeInfo.getBrandResponse.stampCount.toString() + " / 10"
 

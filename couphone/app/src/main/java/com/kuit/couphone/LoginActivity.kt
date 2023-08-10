@@ -1,5 +1,6 @@
 package com.kuit.couphone
 
+import KakaoAPI
 import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
@@ -15,11 +16,17 @@ import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
 import com.kakao.sdk.common.model.KakaoSdkError
 import com.kakao.sdk.user.UserApiClient
+import com.kuit.couphone.MyLocationFragment.Companion.API_KEY
+import com.kuit.couphone.MyLocationFragment.Companion.BASE_URL
 import com.kuit.couphone.data.*
+import com.kuit.couphone.data.kakaoInfo.GPSInfo
 import com.kuit.couphone.databinding.ActivityLoginBinding
 import com.kuit.couphone.ui.home.HomeFragment
 import retrofit2.Call
+import retrofit2.Callback
 import retrofit2.Response
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 
 class LoginActivity : AppCompatActivity() {
 
@@ -97,8 +104,35 @@ class LoginActivity : AppCompatActivity() {
             //로그인이면
             loginWithKakao()
         }
+        transGPS(127.069226866831,37.5436711037005)
     }
 
+    private fun transGPS(x:Double,y:Double){
+        val retrofit = Retrofit.Builder()   // Retrofit 구성
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+        val api = retrofit.create(KakaoAPI::class.java)   // 통신 인터페이스를 객체로 생성
+        val call = api.getWTMGPS(API_KEY,x,y,"WGS84","WTM")   // 검색 조건 입력
+
+        // API 서버에 요청
+        call.enqueue(object: Callback<GPSInfo> {
+            override fun onResponse(
+                call: Call<GPSInfo>,
+                response: Response<GPSInfo>
+            ) {
+                // 통신 성공 (검색 결과는 response.body()에 담겨있음)
+                Log.d("Test123", response.body()!!.documents[0].x.toString())
+                Log.d("Test123", response.body()!!.documents[0].y.toString())
+                //initNearbyInfo(response.body()!!.documents[0].x,response.body()!!.documents[0].y)
+            }
+
+            override fun onFailure(call: Call<GPSInfo>, t: Throwable) {
+                // 통신 실패
+                Log.w("MainActivity", "통신 실패: ${t.message}")
+            }
+        })
+    }
     private fun loginWithKakao() {
         if (AuthApiClient.instance.hasToken()) {
             // accessToken 정보 제공(만료된 경우 갱신된 accessToken 제공)
