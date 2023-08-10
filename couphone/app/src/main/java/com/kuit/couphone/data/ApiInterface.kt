@@ -21,10 +21,17 @@ interface ApiInterface {
         @Header("Authorization") token: String
     ): Call<BrandRegisterResponse>
 
+
+
     @GET("/brands")
     fun getBrand(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
+        @Query("category-id") categoryId: Int,
+        @Query("name") name: String,
+        @Query("sorted-by") sortedBy: Int,
     ): Call<BrandResponse>
+
+
 
     @GET("/brands/{brand-id}")
     fun getBrandDetailed(
@@ -48,6 +55,7 @@ interface ApiInterface {
         @Path("coupon-id") couponId: Int
     ): Call<CouponGetResponse>
 
+
     @GET("/stores/nearby")
     fun getStoresNearby(
         @Header("Authorization") token: String,
@@ -56,9 +64,11 @@ interface ApiInterface {
         @Query("is1km") is1km :Boolean,
         @Query("query") query : String?
     ):Call<StoreResponse>
+
     @PATCH("/users/form")
     fun patchUserInfo(
         @Header("Authorization") token: String,
         @Body  userForm:UserForm,
     ) :Call<UserFormResult>
+
 }
