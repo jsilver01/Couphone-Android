@@ -49,8 +49,10 @@ class CategoryFragment : Fragment() {
         binding = FragmentCategoryBinding.inflate(inflater, container, false)
         //initDummyData()
 
+
+        fetchBrandData(1)
         binding.button1.setOnClickListener {
-            fetchBrandData(1) // Default (sorting 1)
+            fetchBrandData(1)  // Default (sorting 1)
         }
 
         binding.button2.setOnClickListener {
@@ -91,7 +93,7 @@ class CategoryFragment : Fragment() {
     private fun fetchBrandData(sortedBy: Int) {
         val service =  getRetrofit().create(ApiInterface::class.java)
         Log.d("token", "Bearer $user_token")
-        service.getBrand("Bearer $user_token",1,"카페", sortedBy)
+        service.getBrand("Bearer $user_token",1,null, sortedBy)
             .enqueue( object : retrofit2.Callback<BrandResponse>{
                 override fun onResponse(
                     call: Call<BrandResponse>,

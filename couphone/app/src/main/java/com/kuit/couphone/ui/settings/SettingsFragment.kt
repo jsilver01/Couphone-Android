@@ -60,10 +60,10 @@ class SettingsFragment : Fragment() {
             requireActivity().finish()
         }
 
-        binding.leftArrowIv.setOnClickListener {
-            val intent = Intent(requireContext(), HomeFragment::class.java)
-            parentFragmentManager.beginTransaction().replace(R.id.main_frm, HomeFragment()).commit()
-        }
+//        binding.leftArrowIv.setOnClickListener {
+//            val intent = Intent(requireContext(), HomeFragment::class.java)
+//            parentFragmentManager.beginTransaction().replace(R.id.main_frm, HomeFragment()).commit()
+//        }
 
         binding.couphoneTv.setOnClickListener {
             val intent = Intent(requireContext(), MyCouponFragment::class.java)
