@@ -4,26 +4,38 @@
     android:id="@+id/item_webtoon_cl"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="4dp">
-
+    android:layout_marginVertical="4dp"
+    >
     <ImageView
         android:id="@+id/background_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:src="@drawable/couphone_background"/>
-
     <ImageView
         android:id="@+id/category_img_iv"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        android:layout_marginStart="50dp"
         android:src="@drawable/gray_rectangle"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginStart="50dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"/>
+    <TextView
+        android:id="@+id/couphone_count_background_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:layout_marginStart="10dp"
+        android:background="@drawable/couphone_count_box"
+        android:fontFamily="@font/line_seed_sans"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:paddingTop="4dp"
+        android:text="@string/store_stamp_text"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/category_img_iv"
+        app:layout_constraintTop_toTopOf="@id/category_img_iv" />
     <TextView
         android:id="@+id/couphone_dday_background_iv"
         android:layout_width="wrap_content"
@@ -38,43 +50,39 @@
         android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/couphone_count_background_iv"
         app:layout_constraintTop_toTopOf="@id/couphone_count_background_iv" />
-
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_marginEnd="70dp"
-        android:src="@drawable/down_arrow"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/category_img_iv" />
-
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toTopOf="@id/category_img_iv"
+        android:src="@drawable/down_arrow"/>
     <TextView
         android:id="@+id/store_name_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/line_seed_sans_bold"
+        app:layout_constraintStart_toStartOf="@id/couphone_count_background_iv"
         android:text="소문카페"
-        android:textColor="@color/black"
-        android:textSize="16sp"
+        android:fontFamily="@font/line_seed_sans_bold"
         android:textStyle="bold"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp"
-        app:layout_constraintStart_toEndOf="@id/category_img_iv"
-        app:layout_constraintTop_toTopOf="@id/couphone_dday_background_iv" />
-
+        android:textColor="@color/black"
+        android:layout_marginVertical="12dp"
+        android:textSize="16sp"
+        app:layout_constraintTop_toBottomOf="@id/couphone_count_background_iv"/>
     <TextView
         android:id="@+id/store_info_tv"
         android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginVertical="12dp"
-        android:fontFamily="@font/line_seed_sans"
+        app:layout_constraintStart_toStartOf="@id/couphone_count_background_iv"
         android:text="스탬프 10개 적립 시 3000원 이하의 아이템 교환권을 받을 수 있어요!"
+        android:fontFamily="@font/line_seed_sans"
         android:textColor="@color/black"
+        android:layout_marginVertical="12dp"
         android:textSize="12sp"
-        android:layout_marginTop="30dp"
-        android:layout_marginStart="15dp"
-        app:layout_constraintStart_toEndOf="@id/category_img_iv"
         app:layout_constraintTop_toBottomOf="@id/store_name_tv"/>
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

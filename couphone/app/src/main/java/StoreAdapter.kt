@@ -22,12 +22,14 @@ import kotlin.collections.ArrayList
 class StoreAdapter(private val itemList : ArrayList<StoreResult>) : RecyclerView.Adapter<StoreAdapter.ViewHolder>() {
 
     private lateinit var itemClickListener: OnItemClickListener
+
     interface OnItemClickListener{
         fun onItemClick(itemList: StoreResult)
     }
     fun setOnItemClickListener(onItemClickListener: StoreAdapter.OnItemClickListener){
         itemClickListener = onItemClickListener
     }
+
     inner class ViewHolder(val binding : ItemStoreBinding): RecyclerView.ViewHolder(binding.root){
         @SuppressLint("SetTextI18n")
         @RequiresApi(Build.VERSION_CODES.O)
