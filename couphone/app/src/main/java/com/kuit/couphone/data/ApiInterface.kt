@@ -38,18 +38,18 @@ interface ApiInterface {
         @Header("Authorization") token: String,
         @Path("brand-id") id: Int
     ): Call<BrandDetailedResponse>
-    @GET("/coupons")
+    @POST("/coupons")
     fun getCoupons(
         @Header("Authorization") token: String
     ): Call<CouponResponse>
 
-    @GET("/coupons/status/{coupon-id}")
+    @PATCH("/coupons/status/{coupon-id}")
     fun getCouponUseResponse(
         @Header("Authorization") token: String,
         @Path("coupon-id") couponId: Int
     ): Call<CouponUseResponse>
 
-    @GET("/coupons/stamp/{coupon-id}")
+    @PATCH("/coupons/stamp/{coupon-id}")
     fun getCouponGetResponse(
         @Header("Authorization") token: String,
         @Path("coupon-id") couponId: Int
@@ -70,5 +70,10 @@ interface ApiInterface {
         @Header("Authorization") token: String,
         @Body  userForm:UserForm,
     ) :Call<UserFormResult>
+
+    @GET("/users/brands")
+    fun sortingBrand(
+        @Header("Authorization") token: String,
+    ) :Call<UserBrandResponse>
 
 }
