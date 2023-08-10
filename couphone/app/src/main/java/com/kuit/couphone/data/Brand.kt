@@ -24,7 +24,7 @@ data class BrandResponse(
     @SerializedName("code") var code : Int,
     @SerializedName("status") var status : Int,
     @SerializedName("message") var message : String,
-    @SerializedName("result") var result : BrandResult,
+    @SerializedName("result") var result : List<BrandResult>,
 )
 
 data class BrandResult(

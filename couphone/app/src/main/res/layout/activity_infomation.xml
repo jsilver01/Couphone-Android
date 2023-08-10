@@ -484,20 +484,7 @@
                 app:layout_constraintStart_toEndOf="@id/couphone_number_9"
                 app:layout_constraintTop_toBottomOf="@id/couphone_number_1" />
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:id="@+id/button_couphone_use"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:background="@drawable/register_button"
-                android:fontFamily="@font/line_seed_sans_bold"
-                android:paddingStart="80dp"
-                android:paddingEnd="80dp"
-                android:text="쿠폰 사용하기"
-                android:textColor="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/couphone_count_background_iv" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

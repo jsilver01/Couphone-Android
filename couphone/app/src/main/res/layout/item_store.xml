@@ -20,22 +20,36 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
-    <ImageView
+    <TextView
         android:id="@+id/couphone_count_background_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@id/category_img_iv"
-        app:layout_constraintTop_toTopOf="@id/category_img_iv"
+        android:layout_margin="10dp"
         android:layout_marginStart="10dp"
-        android:src="@drawable/couphone_count_box"/>
-    <ImageView
+        android:background="@drawable/couphone_count_box"
+        android:fontFamily="@font/line_seed_sans"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="4dp"
+        android:paddingTop="4dp"
+        android:text="@string/store_stamp_text"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:layout_constraintStart_toEndOf="@id/category_img_iv"
+        app:layout_constraintTop_toTopOf="@id/category_img_iv" />
+    <TextView
         android:id="@+id/couphone_dday_background_iv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/dday_rectangle"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/dday_rectangle"
+        android:fontFamily="@font/line_seed_sans"
+        android:padding="4dp"
+        android:paddingStart="8dp"
+        android:text="D-50"
+        android:textColor="@color/black"
+        android:textSize="14sp"
         app:layout_constraintStart_toEndOf="@id/couphone_count_background_iv"
-        app:layout_constraintTop_toTopOf="@id/couphone_count_background_iv"
-        android:layout_marginLeft="10dp"/>
+        app:layout_constraintTop_toTopOf="@id/couphone_count_background_iv" />
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

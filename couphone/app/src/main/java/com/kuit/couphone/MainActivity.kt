@@ -30,6 +30,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initBottomNavigation() {
+        val bundle = Bundle()
+        bundle.putString("key", null)
+        MyLocationFragment().arguments = bundle
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_frm, MyLocationFragment())
             .commitAllowingStateLoss()
@@ -42,7 +45,11 @@ class MainActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.navigation_home -> {
-                    if(binding.bottomNavigationView.selectedItemId != it.itemId) {
+                    val fragment = supportFragmentManager.findFragmentById(R.id.main_frm)
+                    if(binding.bottomNavigationView.selectedItemId != it.itemId|| fragment is HomeFragment) {
+                        val bundle = Bundle()
+                        bundle.putString("key", null)
+                        MyLocationFragment().arguments = bundle
                         supportFragmentManager.beginTransaction()
                             .replace(R.id.main_frm, MyLocationFragment())
                             .commitAllowingStateLoss()

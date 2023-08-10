@@ -19,6 +19,7 @@ data class UserResult(
     @SerializedName("tokenType") var tokenType : String,
     @SerializedName("memberId") var memberId : Int,
     @SerializedName("grade") var grade : String,
+    @SerializedName("memberLabel") var memberLabel : String,
 )
 
 data class UserInfoResponse(
@@ -33,4 +34,37 @@ data class UserInfoResult(
     @SerializedName("email") var email : String,
     @SerializedName("memberGrade") var memberGrade : String,
     @SerializedName("memberStatus") var memberStatus : String,
+)
+data class UserForm(
+    @SerializedName("phoneNumber") var phoneNumber : String,
+    @SerializedName("pinNumber") var pinNumber : String,
+)
+data class UserFormResult(
+    @SerializedName("id") var id : Int,
+)
+data class BrandInfo(
+    @SerializedName("id") val id: Int,
+    @SerializedName("name") val name: String,
+    @SerializedName("rewardDescription") val rewardDescription: String,
+    @SerializedName("brandImageUrl") val brandImageUrl: String,
+    @SerializedName("stampCount") val stampCount: Int,
+    @SerializedName("createdDate") val createdDate: String
+)
+
+data class BrandInfoListItem(
+    @SerializedName("brandInfo") val brandInfo: BrandInfo,
+    @SerializedName("couponItemStatus") val couponItemStatus: String,
+    @SerializedName("expiredDate") val expiredDate: String
+)
+
+data class UserBrandResponse(
+    @SerializedName("code") val code: Int,
+    @SerializedName("status") val status: Int,
+    @SerializedName("message") val message: String,
+    @SerializedName("result") val result: ResultData
+)
+
+data class ResultData(
+    @SerializedName("brandInfoListByModifiedDate") val brandInfoListByModifiedDate: List<BrandInfoListItem>,
+    @SerializedName("brandInfoListByTotalCount") val brandInfoListByTotalCount: List<BrandInfoListItem>
 )

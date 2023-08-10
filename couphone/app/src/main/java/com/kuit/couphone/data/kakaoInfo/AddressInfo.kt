@@ -50,3 +50,15 @@ data class road_address(
     var x: String,//	X 좌표값, 경위도인 경우 경도(longitude)
     var y: String,    //Y 좌표값, 경위도인 경우 위도(latitude)
 )
+data class GPSInfo(
+    var meta: GPSMeta,                // 장소 메타데이터
+    var documents: List<GPS>          // 검색 결과
+)
+data class GPSMeta(
+    var total_count : String
+)
+
+data class GPS(
+    var x : Double,
+    var y : Double
+)

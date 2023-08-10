@@ -3,6 +3,7 @@ package com.kuit.couphone
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.kuit.couphone.data.BrandResult
 import com.kuit.couphone.data.StoreInfo
 import com.kuit.couphone.databinding.ItemStoreBinding
 
@@ -23,6 +24,8 @@ class BaseItemAdapter(private val itemList : ArrayList<StoreInfo>) : RecyclerVie
             }
         }
     }
+
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseItemAdapter.ViewHolder {
         val binding = ItemStoreBinding.inflate(LayoutInflater.from(parent.context),parent,false)
         return ViewHolder(binding)

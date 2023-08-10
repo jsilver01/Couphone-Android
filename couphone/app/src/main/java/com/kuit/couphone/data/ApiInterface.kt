@@ -1,6 +1,5 @@
 package com.kuit.couphone.data
 
-import android.telecom.Call
 import com.kuit.couphone.data.kakaoInfo.AddressInfo
 import retrofit2.Call
 import retrofit2.http.*
@@ -22,30 +21,59 @@ interface ApiInterface {
         @Header("Authorization") token: String
     ): Call<BrandRegisterResponse>
 
+
+
     @GET("/brands")
     fun getBrand(
-        @Header("Authorization") token: String
+        @Header("Authorization") token: String,
+        @Query("category-id") categoryId: Int,
+        @Query("name") name: String?,
+        @Query("sorted-by") sortedBy: Int,
     ): Call<BrandResponse>
+
+
 
     @GET("/brands/{brand-id}")
     fun getBrandDetailed(
         @Header("Authorization") token: String,
         @Path("brand-id") id: Int
     ): Call<BrandDetailedResponse>
-    @GET("/coupons")
+    @POST("/coupons")
     fun getCoupons(
         @Header("Authorization") token: String
     ): Call<CouponResponse>
 
-    @GET("/coupons/status/{coupon-id}")
+    @PATCH("/coupons/status/{coupon-id}")
     fun getCouponUseResponse(
         @Header("Authorization") token: String,
         @Path("coupon-id") couponId: Int
     ): Call<CouponUseResponse>
 
-    @GET("/coupons/stamp/{coupon-id}")
+    @PATCH("/coupons/stamp/{coupon-id}")
     fun getCouponGetResponse(
         @Header("Authorization") token: String,
         @Path("coupon-id") couponId: Int
     ): Call<CouponGetResponse>
+
+
+    @GET("/stores/nearby")
+    fun getStoresNearby(
+        @Header("Authorization") token: String,
+        @Query("longitude") longitude :Number,
+        @Query("latitude") latitude :Number,
+        @Query("is1km") is1km :Boolean,
+        @Query("query") query : String?
+    ):Call<StoreResponse>
+
+    @PATCH("/users/form")
+    fun patchUserInfo(
+        @Header("Authorization") token: String,
+        @Body  userForm:UserForm,
+    ) :Call<UserFormResult>
+
+    @GET("/users/brands")
+    fun sortingBrand(
+        @Header("Authorization") token: String,
+    ) :Call<UserBrandResponse>
+
 }

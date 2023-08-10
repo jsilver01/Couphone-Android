@@ -39,6 +39,12 @@ class SearchMapFragment : Fragment() {
         adapter = SearchAdapter(searchItemList)
         binding.recyclerViewList.adapter = adapter
         binding.recyclerViewList.layoutManager = LinearLayoutManager(context)
+        binding.backIv.setOnClickListener {
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.main_frm, MyLocationFragment())
+                .addToBackStack(null)
+                .commitAllowingStateLoss()
+        }
         Log.d("dbupdateeeeeeeeeee",searchItemList.toString())
         adapter!!.setOnItemClickListener(object : SearchAdapter.OnItemClickListener{
             override fun onItemClick(keyword: LocalSearchEntity) {
@@ -50,35 +56,41 @@ class SearchMapFragment : Fragment() {
                 parentFragmentManager.beginTransaction().replace(R.id.main_frm, passBundleBFragment).commit()
             }
 
+            override fun onDeleteClick(keyword: LocalSearchEntity) {
+
+            }
+
         })
         binding.submitBtn.setOnClickListener {
             //유효성검사
-
             val localDao = LocalSearchDB.getInstance(requireContext())!!.SearchKeywordDAO()
-            if(localDao.getresultkeyword(binding.searchBar.text.toString())==null) {
+            if(localDao.getresultkeyword(binding.searchEt.text.toString())==null) {
                 localDao.insertSearchKeyword(
                     LocalSearchEntity(
                         2,
                         localDao.getCount(),
                         "temp",
-                        binding.searchBar.text.toString()
+                        binding.searchEt.text.toString()
                     )
                 )
             }
             //검색화면 이동
             val bundle = Bundle()
-            bundle.putString("key", binding.searchBar.text.toString())
+            bundle.putString("key", binding.searchEt.text.toString())
             val passBundleBFragment = MyLocationFragment()
             passBundleBFragment.arguments = bundle
             parentFragmentManager.beginTransaction().replace(R.id.main_frm, passBundleBFragment).commit()
+            //검색결과 api 요청 받은 list들 리사이클러뷰로 띄우기, 지도에 마커 찍기
+
+
             Log.d("dbupdateeeeeeeeeee","업데이트완룓ㄷㄷㄷㄷㄷㄷㄷㄷㄷ")
         }
-        binding.searchBar.setOnEditorActionListener(getEditorActionListener(binding.submitBtn))
-        binding.searchBar.addTextChangedListener(object : TextWatcher {
+        binding.searchEt.setOnEditorActionListener(getEditorActionListener(binding.submitBtn))
+        binding.searchEt.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(charSequence: CharSequence?, i: Int, i1: Int, i2: Int) {}
 
             override fun onTextChanged(charSequence: CharSequence?, i: Int, i1: Int, i2: Int) {
-                val searchText = binding.searchBar.text.toString()
+                val searchText = binding.searchEt.text.toString()
                 if (searchText.isEmpty()) {
                     adapter!!.filterList(searchItemList)
                 } else {
